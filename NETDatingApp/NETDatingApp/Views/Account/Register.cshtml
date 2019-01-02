@@ -5,8 +5,7 @@
 
 <h2>@ViewBag.Title.</h2>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
     @Html.AntiForgeryToken()
     <h4>Create a new account.</h4>
     <hr />
@@ -27,6 +26,15 @@
         @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Gender, new { @class = "col-md-2 control-label" })
+        <br />
+        <div class="col-md-10">
+            @Html.RadioButtonFor(m => m.Gender, "Male")&nbsp;@Html.Label("Man")<br />
+            @Html.RadioButtonFor(m => m.Gender, "Female")&nbsp;@Html.Label("Kvinna")<br />
+            @Html.RadioButtonFor(m => m.Gender, "Annat")&nbsp;@Html.Label("Annat")<br />
         </div>
     </div>
     <div class="form-group">
