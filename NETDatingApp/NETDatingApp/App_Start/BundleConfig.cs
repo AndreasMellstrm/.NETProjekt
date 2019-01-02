@@ -22,6 +22,10 @@ namespace NETDatingApp {
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/bundles/img").Include("~/images/img.css"));
+            bundles.Add(new StyleBundle("~/bundles/custom").Include("~/content/custom.css"));
+            bundles.Add(new StyleBundle("~/bundles/style").Include("~/styles.css"));
         }
     }
 }
