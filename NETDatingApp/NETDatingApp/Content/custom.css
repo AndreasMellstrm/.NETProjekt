@@ -2,5 +2,12 @@
 }
 
 .navbar {
-    background-color: aqua;
+    background-color: #f4b342;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: black;
+}
+
+.navbar-inverse .navbar-brand {
+    color: black;
 }
