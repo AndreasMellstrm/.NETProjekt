@@ -80,7 +80,56 @@ textarea {
     font-weight: bold;
 }
 
+.add-friend {
+    width: 110px;
+    background-color: black;
+    color: rgba(244,179,66,1);
+    box-shadow: 31px 21px 49px -20px rgba(244,179,66,1);
+}
 
+.add-friend p {
+        
+    }
 /* profile posts*/
 
+.profile-post-container{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.form-group{
+    width: 100%;
+}
+.form-control{
+    width: 100%;
+}
 
+
+/* Post-card */
+.post-card {
+    box-shadow: 31px 21px 49px -20px rgba(244,179,66,1);
+    border-top: 2px solid rgba(244,179,66,0.2);
+    margin: 0 0 30px 0;
+    padding: 0 0 5px 0;
+}
+.post-img img{
+    height: 100px;
+    width: 100px;
+    float: left;
+    padding: 15px 15px 0 15px;
+}
+.post-img {
+    float: left;
+    margin: 0 10px 0 0;
+    display: block;
+    border-top: 1px solid rgba(244,179,66,)
+}
+.post-content{
+
+    
+}
+.post-poster {
+    font-weight: bold;
+}
+.post-card p {
+    margin: 0 0 10px 0;
+}
