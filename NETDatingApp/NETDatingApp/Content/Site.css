@@ -22,3 +22,65 @@ select,
 textarea {
     max-width: 280px;
 }
+.navbar-inverse .navbar-nav > li > a {
+    background-color: #f4b342;
+    color: black;
+}
+.navbar {
+    background-color: #f4b342;
+}
+
+.navbar-inverse .navbar-brand {
+    color: black;
+}
+.profile-img {
+    height: 100px;
+    width: 200px;
+    border-radius: 50%;
+    display: inline-block;
+    float: left;
+}
+
+.profile-header h2 {
+    display: inline-block;
+}/*  Profile page header */
+
+.fb-profile img.fb-image-lg {
+    z-index: 0;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.fb-image-profile {
+    margin: -90px 10px 0px 50px;
+    z-index: 9;
+    width: 20%;
+}
+
+@media (max-width:768px) {
+
+    .fb-profile-text > h1 {
+        font-weight: 700;
+        font-size: 16px;
+    }
+
+    .fb-image-profile {
+        margin: -45px 10px 0px 25px;
+        z-index: 9;
+        width: 20%;
+    }
+}
+#bio{
+    
+}
+#bio li{
+    list-style: none;
+}
+#bio .bold{
+    font-weight: bold;
+}
+
+
+/* profile posts*/
+
+

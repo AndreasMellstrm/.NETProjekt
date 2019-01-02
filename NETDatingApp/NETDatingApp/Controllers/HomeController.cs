@@ -21,5 +21,11 @@ namespace NETDatingApp.Controllers {
 
             return View();
         }
+
+        public ActionResult MyProfile() {
+            ViewBag.Message = "Your profile page.";
+
+            return View();
+        }
     }
 }
