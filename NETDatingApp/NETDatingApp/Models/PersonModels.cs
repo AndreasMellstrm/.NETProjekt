@@ -19,8 +19,4 @@ namespace NETDatingApp.Models {
 
     }
 
-    public class PersonDbContext : DbContext {
-        public DbSet<PersonProfile> PersonProfiles { get; set; }
-        public PersonDbContext() : base("PersonProfileDB") { }
-    }
 }
