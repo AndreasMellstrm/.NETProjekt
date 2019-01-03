@@ -17,6 +17,15 @@ namespace NETDatingApp.Models {
         public string Bio { get; set; }
         public string ProfileImg { get; set; }
 
+        public PersonProfile(int ProfileID, string FirstName, string LastName, string Gender, int Age, string Bio = "Biografi saknas", string ProfileImg = "") {
+            this.ProfileID = ProfileID;
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            this.Gender = Gender;
+            this.Age = Age;
+            this.Bio = Bio;
+            this.ProfileImg = ProfileImg;
+        }
     }
 
 }
