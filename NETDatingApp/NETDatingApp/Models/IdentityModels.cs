@@ -25,10 +25,13 @@ namespace NETDatingApp.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+
+        public DbSet<PersonProfile>  PersonProfiles { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
 
         public static ApplicationDbContext Create()
         {
