@@ -12,7 +12,7 @@ namespace NETDatingApp.Controllers
         // GET: PersonProfile
         public ActionResult Index()
         {
-            var ctx = new PersonDbContext();
+            var ctx = new ApplicationDbContext();
             var viewModel = new PersonProfile();
             return View();
         }

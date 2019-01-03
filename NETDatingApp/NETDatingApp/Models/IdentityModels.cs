@@ -12,8 +12,7 @@ namespace NETDatingApp.Models
     public class ApplicationUser : IdentityUser
     {
         public string Gender { get; set; }
-        [ForeignKey("PersonProfile")]
-        public PersonProfile Profile { get; set; }
+       
         
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

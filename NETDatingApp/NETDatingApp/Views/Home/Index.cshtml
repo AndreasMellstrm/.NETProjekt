@@ -15,7 +15,16 @@
             <h2>*Name Nameson</h2>
             <img class="profile-img" src="~/Content/img/bild1.jpg">
         </div>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        @{
+            var x = "Login";
+            var y = "Account";
+            if (System.Web.HttpContext.Current.User != null && System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                x = "MyProfile";
+                y = "Home";
+            }
+        }  
+        <p><a href='@Url.Action(x, y)' class="btn btn-default">Visa mer &raquo;</a></p>
     </div>
     <div class="col-md-4">
         <h2>Get more libraries</h2>
