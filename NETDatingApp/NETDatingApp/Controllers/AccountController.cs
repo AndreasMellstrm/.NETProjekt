@@ -152,7 +152,6 @@ namespace NETDatingApp.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email};
-                var profile = new PersonProfile(1, "Andreas", "Mellström", "Apache", 21);
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

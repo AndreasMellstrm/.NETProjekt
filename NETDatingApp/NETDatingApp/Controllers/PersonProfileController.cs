@@ -13,7 +13,7 @@ namespace NETDatingApp.Controllers
         public ActionResult Index()
         {
             var ctx = new ApplicationDbContext();
-            var viewModel = new PersonProfile(2, "Andreas", "Mellström", "Apache", 21);
+            var viewModel = new PersonProfile();
             return View();
         }
     }
