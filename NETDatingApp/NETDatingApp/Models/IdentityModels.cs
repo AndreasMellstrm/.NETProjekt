@@ -11,7 +11,9 @@ namespace NETDatingApp.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-        public string Gender { get; set; }
+        
+        
+        public PersonProfile PersonProfile { get; set; }
        
         
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
@@ -28,7 +30,7 @@ namespace NETDatingApp.Models
 
         public DbSet<PersonProfile>  PersonProfiles { get; set; }
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("NetDatingDb", throwIfV1Schema: false)
         {
         }
 
