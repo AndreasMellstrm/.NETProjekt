@@ -9,7 +9,7 @@ namespace NETDatingApp.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "NETDatingApp.Models.ApplicationDbContext";
         }
 
