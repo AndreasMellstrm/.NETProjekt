@@ -58,6 +58,18 @@ namespace NETDatingApp.Models
         public string ConfirmPassword { get; set; }
     }
 
+    public class ChangeEmailViewModel {
+        [Required]
+        [EmailAddress]
+        [Display(Name = "New email")]
+        public string NewEmail { get; set; }
+
+        [EmailAddress]
+        [Display(Name = "Confirm new email")]
+        [Compare("NewEmail", ErrorMessage = "The new email and confirmation email do not match.")]
+        public string ConfirmEmail { get; set; }
+    }
+
     public class AddPhoneNumberViewModel
     {
         [Required]
