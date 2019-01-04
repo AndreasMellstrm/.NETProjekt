@@ -10,6 +10,7 @@ namespace NETDatingApp.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
             ContextKey = "NETDatingApp.Models.ApplicationDbContext";
         }
 
