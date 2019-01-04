@@ -30,7 +30,7 @@ namespace NETDatingApp.Models
 
         public DbSet<PersonProfile>  PersonProfiles { get; set; }
         public ApplicationDbContext()
-            : base("NetDatingDb", throwIfV1Schema: false)
+            : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 
