@@ -201,21 +201,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812291238344_InitialCreate.cs" />
-    <Compile Include="Migrations\201812291238344_InitialCreate.Designer.cs">
-      <DependentUpon>201812291238344_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901021138396_Gender.cs" />
-    <Compile Include="Migrations\201901021138396_Gender.Designer.cs">
-      <DependentUpon>201901021138396_Gender.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901040931283_Hej.cs" />
-    <Compile Include="Migrations\201901040931283_Hej.Designer.cs">
-      <DependentUpon>201901040931283_Hej.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901040944141_Hej2.0.cs" />
-    <Compile Include="Migrations\201901040944141_Hej2.0.Designer.cs">
-      <DependentUpon>201901040944141_Hej2.0.cs</DependentUpon>
+    <Compile Include="Migrations\201901041008512_MissingXXX.cs" />
+    <Compile Include="Migrations\201901041008512_MissingXXX.Designer.cs">
+      <DependentUpon>201901041008512_MissingXXX.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -305,17 +293,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812291238344_InitialCreate.resx">
-      <DependentUpon>201812291238344_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901021138396_Gender.resx">
-      <DependentUpon>201901021138396_Gender.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901040931283_Hej.resx">
-      <DependentUpon>201901040931283_Hej.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901040944141_Hej2.0.resx">
-      <DependentUpon>201901040944141_Hej2.0.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901041008512_MissingXXX.resx">
+      <DependentUpon>201901041008512_MissingXXX.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

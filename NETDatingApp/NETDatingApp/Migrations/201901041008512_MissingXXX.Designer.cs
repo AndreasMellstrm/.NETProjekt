@@ -7,13 +7,13 @@ namespace NETDatingApp.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Hej20 : IMigrationMetadata
+    public sealed partial class MissingXXX : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Hej20));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(MissingXXX));
         
         string IMigrationMetadata.Id
         {
-            get { return "201901040944141_Hej2.0"; }
+            get { return "201901041008512_MissingXXX"; }
         }
         
         string IMigrationMetadata.Source
