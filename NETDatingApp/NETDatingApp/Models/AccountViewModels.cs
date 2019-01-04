@@ -65,6 +65,18 @@ namespace NETDatingApp.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "Förnamn")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Efternamn")]
+        public string LastName { get; set; }
+
+        [Range(18,130)]
+        [Display(Name ="Ålder")]
+        public int Age { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
