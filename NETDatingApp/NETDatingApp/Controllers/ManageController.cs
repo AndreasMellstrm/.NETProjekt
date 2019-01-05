@@ -61,6 +61,7 @@ namespace NETDatingApp.Controllers
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                : message == ManageMessageId.ChangeEmailSuccess ? "Your email has been changed."
                 : "";
 
             var userId = User.Identity.GetUserId();
@@ -244,6 +245,30 @@ namespace NETDatingApp.Controllers
             return View(model);
         }
 
+        public ActionResult ChangeEmail() {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangeEmail(ChangeEmailViewModel model) {
+            if (!ModelState.IsValid) {
+                return View(model);
+            }
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            user.Email = model.NewEmail;
+            user.UserName = model.NewEmail;
+            var result = await UserManager.UpdateAsync(user);
+            if (result.Succeeded) {
+                if (user != null) {
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                }
+                return RedirectToAction("Index", new { Message = ManageMessageId.ChangeEmailSuccess });
+            }
+            AddErrors(result);
+            return View(model);
+        }
+
         //
         // GET: /Manage/SetPassword
         public ActionResult SetPassword()
@@ -377,6 +402,7 @@ namespace NETDatingApp.Controllers
         {
             AddPhoneSuccess,
             ChangePasswordSuccess,
+            ChangeEmailSuccess,
             SetTwoFactorSuccess,
             SetPasswordSuccess,
             RemoveLoginSuccess,
