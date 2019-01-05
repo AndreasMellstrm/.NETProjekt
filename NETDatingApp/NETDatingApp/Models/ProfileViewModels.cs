@@ -7,9 +7,7 @@ using System.Web;
 namespace NETDatingApp.Models
 {
     public class MyProfileViewModel
-    {
-        public string UserId { get; set; }
-        
+    {   
         public PersonProfile Profile { get; set; }
     }
 
@@ -18,8 +16,6 @@ namespace NETDatingApp.Models
     }
 
     public class ChangeProfileInfoViewModel {
-        public string UserId { get; set; }
-
         public PersonProfile Profile { get; set; }
 
         [Required]
@@ -35,7 +31,7 @@ namespace NETDatingApp.Models
         public int Age { get; set; }
 
         [Required]
-        [Display(Name = "Gender")]
+        [Display(Name = "Kön")]
         public string Gender { get; set; }
     }
 }

@@ -11,30 +11,29 @@ namespace NETDatingApp.Controllers
 {
     public class ProfileController : Controller
     {
+        public ApplicationDbContext ctx { get; set; }
 
-        
-        public ActionResult MyProfile() {
-            var ctx = new ApplicationDbContext();
-            var userId = User.Identity.GetUserId();
-            var profiles = (from p in ctx.PersonProfiles
-                        join user in ctx.Users on p.ProfileID equals user.ProfileID
-                        where user.Id == userId
-                        select p).ToList();
-            return View(new MyProfileViewModel {
-                UserId = userId,
-                Profile = profiles[0]
-            });
+        public ProfileController() {
+            ctx = new ApplicationDbContext();
         }
-        public ActionResult ChangePersonalInformation() {
-            var ctx = new ApplicationDbContext();
+
+        public PersonProfile GetCurrentProfile() {
             var userId = User.Identity.GetUserId();
             var profiles = (from p in ctx.PersonProfiles
                             join user in ctx.Users on p.ProfileID equals user.ProfileID
                             where user.Id == userId
                             select p).ToList();
-            return View(new ChangeProfileInfoViewModel {
-                UserId = userId,
-                Profile = profiles[0]
+            return profiles[0];
+        }
+
+        public ActionResult MyProfile() {
+            return View(new MyProfileViewModel {
+                Profile = GetCurrentProfile()
+            });
+        }
+        public ActionResult ChangeProfileInfo() {
+        return View(new ChangeProfileInfoViewModel {
+            Profile = GetCurrentProfile()
             });
         }
 
@@ -44,11 +43,12 @@ namespace NETDatingApp.Controllers
             if (!ModelState.IsValid) {
                 return View(model);
             }
-            model.Profile.FirstName = model.FirstName;
-            model.Profile.LastName = model.LastName;
-            model.Profile.Age = model.Age;
-            model.Profile.Gender = model.Gender;
-
+            var profile = GetCurrentProfile();
+            profile.FirstName = model.FirstName;
+            profile.LastName = model.LastName;
+            profile.Age = model.Age;
+            profile.Gender = model.Gender;
+            await ctx.SaveChangesAsync();
             return RedirectToAction("MyProfile");
         }
 

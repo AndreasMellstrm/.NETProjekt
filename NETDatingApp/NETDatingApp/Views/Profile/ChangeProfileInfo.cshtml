@@ -1,13 +1,12 @@
-﻿@using NETDatingApp.Models
-@model NETDatingApp.Models.ChangeProfileInfoViewModel
+﻿@model NETDatingApp.Models.ChangeProfileInfoViewModel
 @{
-    ViewBag.Title = "Change personal information";
+    ViewBag.Title = "Change profile info";
 }
 
 <h2>@ViewBag.Title.</h2>
 
-@using (Html.BeginForm("ChangePersonalInformation", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
-    @Html.AntiForgeryToken()  
+@using (Html.BeginForm("ChangeProfileInfo", "Profile", FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
+    @Html.AntiForgeryToken()
     <h4>Change Details Form</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
@@ -20,22 +19,22 @@
     <div class="form-group">
         @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.LastName, new {@Value = Model.Profile.LastName, @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Age, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Age, new { @min = "0", @max = "130", @class = "form-control" })
+            @Html.TextBoxFor(m => m.Age, new {@Value = Model.Profile.Age, @min = "0", @max = "130", @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
         @Html.Label("Kön", new { @class = "col-md-2 control-label" })
         <br />
         <div class="col-md-10">
-            @Html.RadioButtonFor(m => m.Gender, "Male")&nbsp;@Html.Label("Man")<br />
-            @Html.RadioButtonFor(m => m.Gender, "Female")&nbsp;@Html.Label("Kvinna")<br />
-            @Html.RadioButtonFor(m => m.Gender, "Annat")&nbsp;@Html.Label("Annat")<br />
+            @Html.RadioButtonFor(m => m.Gender, "Man", Model.Gender == "Man" ? new { @checked = "checked" } : null) &nbsp;@Html.Label("Man")<br />
+            @Html.RadioButtonFor(m => m.Gender, "Kvinna", Model.Gender == "Kvinna" ? new { @checked = "checked" } : null)&nbsp;@Html.Label("Kvinna")<br />
+            @Html.RadioButtonFor(m => m.Gender, "Annat", Model.Gender == "Annat" ? new { @checked = "checked" } : null)&nbsp;@Html.Label("Annat")<br />
         </div>
     </div>
     <div class="form-group">
