@@ -269,7 +269,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\MyProfile.cshtml" />
+    <Content Include="Views\Profile\MyProfile.cshtml" />
     <Content Include="Views\Manage\ChangeEmail.cshtml" />
     <Content Include="Views\Profile\ChangePersonalInformation.cshtml" />
   </ItemGroup>
