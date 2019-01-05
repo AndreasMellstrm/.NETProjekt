@@ -10,7 +10,7 @@ namespace NETDatingApp.Controllers
     public class PersonProfileController : Controller
     {
         // GET: PersonProfile
-        public ActionResult Index()
+        public ActionResult PersonProfile()
         {
             var ctx = new ApplicationDbContext();
             //var viewModel = new PersonProfile();
