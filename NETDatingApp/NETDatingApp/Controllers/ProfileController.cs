@@ -10,9 +10,26 @@ namespace NETDatingApp.Controllers
 {
     public class ProfileController : Controller
     {
-        public ActionResult ChangePersonalInformation(ChangeDetailsViewModel model) {
-            return null;
+
+        
+        public ActionResult MyProfile() {
+            var ctx = new ApplicationDbContext();
+            var userId = User.Identity.GetUserId();
+            var query = from p in ctx.PersonProfiles
+                        where 
+            return View(new MyProfileViewModel {
+                UserId = userId,
+                Profile = 
+            });
         }
+        public ActionResult ChangePersonalInformation(ChangeProfileInfoViewModel model) {
+            var ctx = new ApplicationDbContext();
+            var userId = User.Identity.GetUserId();
+            return View( new ChangeProfileInfoViewModel 
+            {
+            });
+        }
+
 
        
        

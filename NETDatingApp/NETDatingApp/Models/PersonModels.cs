@@ -30,17 +30,5 @@ namespace NETDatingApp.Models {
             this.ProfileImg = ProfileImg;
             ApplicationUsers = new HashSet<ApplicationUser>();
         }
-
-        public PersonProfile GetProfile() {
-            string id = User.Identity.GetUserID();
-            using (var ctx = new ApplicationDbContext()) {
-                var profiles = (from p in ctx.PersonProfiles
-                                where p.ProfileID in()
-                            select ).ToList();
-                PersonProfile profile = profiles[0];
-                return profile;
-            }
-
-        }
     }
 }
