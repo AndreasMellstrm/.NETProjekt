@@ -25,7 +25,21 @@
                     <li>@Html.ActionLink("test", "Index", "Home")</li>
                     <li>@Html.ActionLink("test", "About", "Home")</li>
                     <li>@Html.ActionLink("test", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Min profil", "MyProfile", "Profile")</li>
+                    @if (System.Web.HttpContext.Current.User != null && System.Web.HttpContext.Current.User.Identity.IsAuthenticated) {
+                        <li>@Html.ActionLink("Min profil", "MyProfile", "Profile")</li>
+                    }
+                    <li>
+                        <div id="custom-search-input">
+                            <div class="input-group col-md-12">
+                                <input type="text" class="form-control input-lg" placeholder="Buscar" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-info btn-lg" type="button">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
