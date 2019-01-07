@@ -24,6 +24,7 @@ namespace NETDatingApp.Controllers
                             where user.Id == userId
                             select p).ToList();
             return profiles[0];
+
         }
 
         public ActionResult MyProfile() {
