@@ -71,11 +71,9 @@ textarea {
     width: 35%;
     padding: 3px 5px 3px 5px;
 }
-
-
-
-
 /* /Ladning page */
+
+/* Profile page */
 fb-profile{
     max-width: 100%;
 }
@@ -160,6 +158,10 @@ fb-profile{
     margin-bottom: 2px;
    
 }
+
+/* /profile page */
+
+
 /* profile posts*/
 
 .profile-container{
@@ -174,7 +176,7 @@ fb-profile{
 
 }
 
-
+/* /profile posts */
 /* Post-card */
 .post-card {
     border: 1px solid;
@@ -220,9 +222,9 @@ fb-profile{
 
 }
 
+/* /post-card */
+
 /* search bar */
-
-
 .searchbar {
     margin-bottom: auto;
     margin-top: auto;
@@ -265,3 +267,5 @@ fb-profile{
     border-radius: 50%;
     color: white;
 }
+
+/* /search bar  */
