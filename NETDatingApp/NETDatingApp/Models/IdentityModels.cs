@@ -26,13 +26,15 @@ namespace NETDatingApp.Models {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser> {
 
         public DbSet<PersonProfile> PersonProfiles { get; set; }
+        public DbSet<FriendRelationship> FriendRelationships { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false) {
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {
            base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Friends>().HasRequired(c => c.ProfileA).WithMany(u => u.ProfileAFriends).HasForeignKey(c => c.ProfileAId).WillCascadeOnDelete(false);
-            modelBuilder.Entity<Friends>().HasRequired(c => c.ProfileB).WithMany(u => u.ProfileBFriends).HasForeignKey(c => c.ProfileBId).WillCascadeOnDelete(false);
+            modelBuilder.Entity<FriendRelationship>().HasRequired(c => c.ProfileA).WithMany(u => u.ProfileAFriendRelationship).HasForeignKey(c => c.ProfileAId).WillCascadeOnDelete(false);
+            modelBuilder.Entity<FriendRelationship>().HasRequired(c => c.ProfileB).WithMany(u => u.ProfileBFriendRelationship).HasForeignKey(c => c.ProfileBId).WillCascadeOnDelete(false);
         }
        
         public static ApplicationDbContext Create() {

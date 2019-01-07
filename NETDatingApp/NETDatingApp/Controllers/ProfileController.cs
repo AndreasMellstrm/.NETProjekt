@@ -53,6 +53,46 @@ namespace NETDatingApp.Controllers
             return RedirectToAction("MyProfile");
         }
 
+        public ActionResult FriendsList() {
+            var currentProfile = GetCurrentProfile();
+            return View(new FriendsListViewModel {
+                Profile = currentProfile,
+                FriendRequests = (from fr in ctx.FriendRelationships
+                                  where fr.IsFriends == false
+                                  where fr.ProfileBId == currentProfile.ProfileID
+                                  select fr).ToList()
+            });
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> SendFriendRequest(int ReceiverID) {
+            int RequestorID = GetCurrentProfile().ProfileID;
+            var fr = new FriendRelationship {
+                ProfileAId = RequestorID,
+                ProfileBId = ReceiverID,
+                IsFriends = false
+            };
+            ctx.FriendRelationships.Add(fr);
+            await ctx.SaveChangesAsync();
+            return View();
+        }
+
+       [HttpPost]
+        public async Task<ActionResult> AcceptFriendRequest(int RequestorID) {
+            int ReceiverID = GetCurrentProfile().ProfileID;
+            var friendRelationships = (from fr in ctx.FriendRelationships
+                                      where fr.ProfileAId == RequestorID
+                                      where fr.ProfileBId == ReceiverID
+                                      select fr).ToList();
+            var friendRelationship = friendRelationships[0];
+            friendRelationship.IsFriends = true;
+            await ctx.SaveChangesAsync();
+            return View();
+
+
+
+        }
+        
 
     }
 }

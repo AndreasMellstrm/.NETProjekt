@@ -23,16 +23,16 @@ namespace NETDatingApp.Models {
         public virtual ICollection<ApplicationUser> ApplicationUsers { get; set; }
         
         [InverseProperty("ProfileA")]
-        public virtual ICollection<Friends> ProfileAFriends { get; set; }
+        public virtual ICollection<FriendRelationship> ProfileAFriendRelationship { get; set; }
 
         [InverseProperty("ProfileB")]
-        public virtual ICollection<Friends> ProfileBFriends { get; set; }
+        public virtual ICollection<FriendRelationship> ProfileBFriendRelationship { get; set; }
 
 
         public PersonProfile() {
 
         }
-        public PersonProfile(string FirstName, string LastName, string Gender, int Age, string Bio = "Biografi saknas", string ProfileImg = "") {
+        public PersonProfile(string FirstName, string LastName, string Gender, int Age, string Bio = "Biografi saknas", string ProfileImg = @"~/Content/img/blankProfile.png") {
             this.FirstName = FirstName;
             this.LastName = LastName;
             this.Gender = Gender;
@@ -40,14 +40,14 @@ namespace NETDatingApp.Models {
             this.Bio = Bio;
             this.ProfileImg = ProfileImg;
             ApplicationUsers = new HashSet<ApplicationUser>();
-            ProfileAFriends = new HashSet<Friends>();
-            ProfileBFriends = new HashSet<Friends>();
+            ProfileAFriendRelationship = new HashSet<FriendRelationship>();
+            ProfileBFriendRelationship = new HashSet<FriendRelationship>();
 
         }
 
     }
 
-    public class Friends {
+    public class FriendRelationship {
 
         [Key, Column(Order = 0)]
         public int ProfileAId { get; set; }
@@ -56,11 +56,11 @@ namespace NETDatingApp.Models {
         public int ProfileBId { get; set; }
 
         [ForeignKey("ProfileAId")]
-        [InverseProperty("ProfileAFriends")]
+        [InverseProperty("ProfileAFriendRelationship")]
         public virtual PersonProfile ProfileA { get; set; }
 
-        [ForeignKey("UserBId")]
-        [InverseProperty("ProfileBFriends")]
+        [ForeignKey("ProfileBId")]
+        [InverseProperty("ProfileBFriendRelationship")]
         public virtual PersonProfile ProfileB { get; set; }
 
         public bool IsFriends { get; set; }
