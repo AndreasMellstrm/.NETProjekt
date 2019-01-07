@@ -25,7 +25,10 @@
                     <li>@Html.ActionLink("test", "Index", "Home")</li>
                     <li>@Html.ActionLink("test", "About", "Home")</li>
                     <li>@Html.ActionLink("test", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Min profil", "MyProfile", "Profile")</li>
+                    @if (System.Web.HttpContext.Current.User != null && System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Min profil", "MyProfile", "Profile")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
