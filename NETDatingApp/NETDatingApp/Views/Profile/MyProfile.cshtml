@@ -14,32 +14,57 @@
             <h1 class="profile-name">@Model.Profile.FirstName @Model.Profile.LastName</h1>
             <p class="profile-bio">@Model.Profile.Bio</p>
 
-
-
-
-            <div class="latest-visitors">
-                <h4> Senaste besökarna</h4>
-                <ul>
-                    <li> <a href=""> Ludvig Lund</a> </li>
-                    <li> <a href=""> Ludvig Mellström</a> </li>
-                    <li> <a href=""> Ludvig Sagtröm</a> </li>
-                    <li> <a href=""> Hugo Mellström </a> </li>
-                    <li> <a href=""> Andreas Sagström  </a> </li>
-                </ul>
-            </div>
             <div class="bio">
                 <ul>
                     <li><span class="bold"> Kön: </span> @Model.Profile.Gender</li>
                     <li><span class="bold"> Ålder: </span> @Model.Profile.Age</li>
-                    
+
                 </ul>
             </div>
+
+        </div>
+
+        <!--
+        <div class="friend-list">
+        <ul>
+            <li> <a href=""> test </a></li>
+            <li> <a href=""> test </a></li>
+            <li> <a href=""> test </a></li>
+            <li> <a href=""> test </a></li>
+            <li> <a href=""> test </a></li>
+        </ul>
+    </div>
+
+
+        -->
+
+
+
+        <div class="friend-list">
+            <h4> Senaste besökarna</h4>
+            <ul>
+                <li> <a href=""> Ludvig Lund</a> </li>
+                <li> <a href=""> Ludvig Mellström</a> </li>
+                <li> <a href=""> Ludvig Sagtröm</a> </li>
+                <li> <a href=""> Hugo Mellström </a> </li>
+                <li> <a href=""> Andreas Sagström  </a> </li>
+            </ul>
+        </div>
+        <div class="friend-list" id="list-margin">
+            <h4> Vänner </h4>
+                <ul>
+                    <li> <a href=""> test </a></li>
+                    <li> <a href=""> test </a></li>
+                    <li> <a href=""> test </a></li>
+                    <li> <a href=""> test </a></li>
+                    <li> <a href=""> test </a></li>
+                </ul>
         </div>
 
 
-        
 
-        <hr />  
+
+        <hr />
         <div class="profile-container">
 
             <a class="add-friend" href="">Lägg till vän</a>
@@ -54,9 +79,9 @@
 
             <hr />
             <h3 class="posts-headline"> Senaste inläggen </h3>
-            
-            
-            
+
+
+
             <!-- user posts end up here -->
             <div class="profile-posts">
 
