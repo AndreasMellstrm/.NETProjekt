@@ -32,8 +32,8 @@ namespace NETDatingApp.Controllers
             });
         }
         public ActionResult ChangeProfileInfo() {
-        return View(new ChangeProfileInfoViewModel {
-            Profile = GetCurrentProfile()
+            return View(new ChangeProfileInfoViewModel {
+                Profile = GetCurrentProfile()
             });
         }
 

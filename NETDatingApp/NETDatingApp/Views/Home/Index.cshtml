@@ -9,26 +9,74 @@
     <p><a href="https://sv.wikipedia.org/wiki/Incest" class="btn btn-primary btn-lg">Vad innebär det? &raquo;</a></p>
 </div>
 
+@{
+    var x = "Login";
+    var y = "Account";
+    if (System.Web.HttpContext.Current.User != null && System.Web.HttpContext.Current.User.Identity.IsAuthenticated) {
+        x = "MyProfile";
+        y = "Home";
+    }
+}
+
+
 <div class="row">
-    <div class="col-md-4">
-        <div class="profile-header">
-            <h2>*Name Lastname</h2>
-            <img class="profile-img" src="~/Content/img/blankProfile.png">
+    <div class="profile-card">
+        <h2 class="card-name"> Ludvig Lund</h2>
+        <div class="card-content">
+            <img class="card-img" src="~/Content/img/blankProfile.png">
+            <p class="card-bio">
+                Snygg tjej i lyxförpackning
+                bla bla bla
+                bla bla bla
+                bla bla bla
+                bla bla bla
+                bla bla bla
+                bla bla bla
+                bla bla bla
+            </p>
         </div>
-        @{
-            var x = "Login";
-            var y = "Account";
-            if (System.Web.HttpContext.Current.User != null && System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
-            {
-                x = "MyProfile";
-                y = "Home";
-            }
-        }  
-        <p><a href='@Url.Action(x, y)' class="btn btn-default">Visa mer &raquo;</a></p>
+        <a href='@Url.Action(x, y)' class="card-btn"> visa mer </a>
+
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+
+    <div class="profile-card">
+        <h2 class="card-name"> Ludvig Lund</h2>
+        <div class="card-content">
+            <img class="card-img" src="~/Content/img/blankProfile.png">
+            <p class="card-bio">
+                Snygg tjej i lyxförpackning
+                bla bla bla
+                bla bla bla
+                bla bla bla
+                bla bla bla
+                bla bla bla
+                bla bla bla
+                bla bla bla
+            </p>
+        </div>
+        <a href='@Url.Action(x, y)' class="card-btn"> visa mer </a>
+
+    </div>
+
+    <div class="profile-card">
+        <h2 class="card-name"> Ludvig Lund</h2>
+        <div class="card-content">
+            <img class="card-img" src="~/Content/img/blankProfile.png">
+            <p class="card-bio">
+                Snygg tjej i lyxförpackning
+                bla bla bla
+                bla bla bla
+                bla bla bla
+                bla bla bla
+                bla bla bla
+                bla bla bla
+                bla bla bla
+            </p>
+        </div>
+        <a href='@Url.Action(x, y)' class="card-btn"> visa mer </a>
+
     </div>
 </div>
+
+
+

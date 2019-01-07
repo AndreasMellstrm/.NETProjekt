@@ -39,17 +39,43 @@ textarea {
 }
 
 
-.profile-img {
-    height: 100px;
-    width: 200px;
-    border-radius: 50%;
-    display: inline-block;
-    float: left;
+/* Profile-card on landing page */
+.profile-card{
+    width: 29%;
+    height: 33%;
+    padding: 10px 5px 10px 15px;
+    border: 2px solid black;
+}
+.card-content{
+    display: flex;
+}
+.card-name{
+    margin: 10px 10px 10px 0;
+    border-bottom: 1px solid rgb(229, 229, 229);
+    padding-bottom: 10px;
+}
+.card-img{
+    height: 30%;
+    width: 35%;
+}
+.card-bio{
+    padding: 0 0 0 10px;
+
+
+}
+.card-btn{
+
 }
 
-.profile-header h2 {
+.row{
     display: inline-block;
 }
+
+
+
+
+
+/* /Ladning page */
 fb-profile{
     max-width: 100%;
 }
