@@ -1,4 +1,8 @@
-﻿@model NETDatingApp.Models.MyProfileViewModel
+﻿@using NETDatingApp.Models
+@model MyProfileViewModel
+@Model UserPostIndexViewModel
+
+
 @{
     ViewBag.Title = "MyProfile";
 }
@@ -24,22 +28,6 @@
 
         </div>
 
-        <!--
-        <div class="friend-list">
-        <ul>
-            <li> <a href=""> test </a></li>
-            <li> <a href=""> test </a></li>
-            <li> <a href=""> test </a></li>
-            <li> <a href=""> test </a></li>
-            <li> <a href=""> test </a></li>
-        </ul>
-    </div>
-
-
-        -->
-
-
-
         <div class="friend-list">
             <h4> Senaste besökarna</h4>
             <ul>
@@ -51,23 +39,25 @@
             </ul>
         </div>
         <div class="friend-list" id="list-margin">
-            <h4> Vänner </h4>
-                <ul>
-                    <li> <a href=""> test </a></li>
-                    <li> <a href=""> test </a></li>
-                    <li> <a href=""> test </a></li>
-                    <li> <a href=""> test </a></li>
-                    <li> <a href=""> test </a></li>
-                </ul>
+            <h4> @Model.Profile.FirstName's vänner </h4>
+            <ul>
+                <li> <a href=""> test </a></li>
+                <li> <a href=""> test </a></li>
+                <li> <a href=""> test </a></li>
+                <li> <a href=""> test </a></li>
+                <li> <a href=""> test </a></li>
+            </ul>
         </div>
-
-
-
 
         <hr />
         <div class="profile-container">
 
             <a class="add-friend" href="">Lägg till vän</a>
+
+
+
+
+
 
             <div class="form-group">
                 <label for="comment">Vill du skriva något till @Model.Profile.FirstName ?</label>
@@ -77,44 +67,19 @@
 
 
 
+
+
             <hr />
             <h3 class="posts-headline"> Senaste inläggen </h3>
-
-
 
             <!-- user posts end up here -->
             <div class="profile-posts">
 
-                <!-- the card that contains everything the user posts -->
-                <div class="post-card">
-                    <div class="post-img">
-                        <img src="~/Content/img/blankProfile.png" />
-                    </div>
-                    <div class="post-content">
-                        <h3 class="post-poster"> <a href=""> Ludvig Lund </a> </h3>
-                        <p> * hej hej!* </p>
-                    </div>
-                </div>
 
-                <div class="post-card">
-                    <div class="post-img">
-                        <img src="~/Content/img/blankProfile.png" />
-                    </div>
-                    <div class="post-content">
-                        <h3 class="post-poster"> <a href=""> Hugo Sagström </a> </h3>
-                        <p> * hejsan vilken fin dag.* </p>
-                    </div>
-                </div>
 
-                <div class="post-card">
-                    <div class="post-img">
-                        <img src="~/Content/img/blankProfile.png" />
-                    </div>
-                    <div class="post-content">
-                        <h3 class="post-poster"> <a href=""> Andreas Mellström </a> </h3>
-                        <p> * Hallå hej * </p>
-                    </div>
-                </div>
+
+
+
 
 
             </div> <!-- /profile-posts -->

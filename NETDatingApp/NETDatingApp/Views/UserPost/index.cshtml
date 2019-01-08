@@ -1,0 +1,25 @@
+﻿
+
+
+
+@using NETDatingApp.Models
+@Model UserPostIndexViewModel
+
+
+
+<div class="post-card">
+    @foreach (var user in Model.UserPost) {
+
+        <div class="post-img">
+            <img src="@user.Img" />
+        </div>
+
+        <div class="post-content">
+            <h3 class="post-poster"> <a href=""> @user.User </a> </h3>
+            <p> @user.Content</p>
+        </div>
+    }
+</div>
+<hr />
+
+@Html.Partial("AddUserPostForm", new UserPostModels())
