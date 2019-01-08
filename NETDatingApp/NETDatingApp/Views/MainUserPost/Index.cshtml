@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/jquery-3.3.1.slim.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#submit").click(function () {
+            var id = $("#id")
+            var user = $("#user").val();
+            var comment = $("#comment").val();
+
+            var datastring = /*"User= " + user + */ "& comment = " + comment;
+
+            $.ajax({
+                type: "post",
+                url: "Register",
+                data: datastring,
+                success: function ($data) {
+                    $("#show_stored_data").html($data);
+                    alert("success!");
+                    console.log("success!");
+                },
+                error: function () {
+                    alert("fail");
+                    console.log("fail");
+                }
+            })
+        })
+    })
+
+</script>
+
+<h2>Registrering</h2>
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>User</th>
+        <th>Comment</th>
+        <th>Img</th>
+    </tr>
+    <tr>
+        <td><input type="number" class="form-control" id="id"</td>
+        <td><input type="text" class="form-control" id="user"</td>
+        <td><input type="text" class="form-control" id="comment" /></td>
+
+    </tr>
+
+
+</table>
+<button type="button" class="btn btn-success" id="submit"> Submit  </button>
+<hr />
+Stored Data
+<div id="show_stored_data">
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<div class="form-group">
+    <label for="comment" id="user">Vill du skriva något till Ludvig? </label>
+    <textarea class="form-control" rows="5" id="comment"></textarea>
+</div>
+
+<button type="button" class="btn" id="submit"> Skicka </button>
+
+    -->

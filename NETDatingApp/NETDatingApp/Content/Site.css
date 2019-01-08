@@ -178,6 +178,10 @@ fb-profile{
 
 }
 
+.profile-container .button{
+    margin-top: 5px;
+}
+
 /* /profile posts */
 /* Post-card */
 .post-card {
