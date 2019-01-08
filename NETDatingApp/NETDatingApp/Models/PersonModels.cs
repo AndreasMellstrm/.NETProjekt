@@ -24,7 +24,7 @@ namespace NETDatingApp.Models {
         public PersonProfile() {
 
         }
-        public PersonProfile(string FirstName, string LastName, string Gender, int Age, string Bio = "Biografi saknas", string ProfileImg = "~/Content/img/blankProfile.png") {
+        public PersonProfile(string FirstName, string LastName, string Gender, int Age, string Bio = "Biografi saknas", string ProfileImg = "") {
             this.FirstName = FirstName;
             this.LastName = LastName;
             this.Gender = Gender;
