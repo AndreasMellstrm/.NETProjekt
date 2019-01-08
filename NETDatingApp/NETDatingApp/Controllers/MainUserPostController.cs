@@ -17,14 +17,16 @@ namespace NETDatingApp.Controllers
 
         [HttpPost]
         public ActionResult Register(int id, string user, string comment) {
+            try { 
             ApplicationDbContext db = new ApplicationDbContext();
-            UserPost up = new UserPost();
+            UserPostModel up = new UserPostModel();
             up.Id = id;
             up.User = user;
             up.Comment = comment;
+            db.UserPosts.Add(up);
             int res = db.SaveChanges();
             if(res > 0) {
-                List<UserPost> Lup = db.UserPost.ToList();
+                List<UserPostModel> Lup = db.UserPosts.ToList();
                 return View(Lup);
             }
 

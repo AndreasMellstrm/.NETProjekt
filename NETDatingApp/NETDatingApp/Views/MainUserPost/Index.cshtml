@@ -1,33 +1,32 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
-<script src="~/Scripts/jquery-3.3.1.slim.js"></script>
+<script src="~/Scripts/jquery-3.3.1.slim.js"> </script>
 
 <script>
-    $(document).ready(function () {
-        $("#submit").click(function () {
-            var id = $("#id")
-            var user = $("#user").val();
-            var comment = $("#comment").val();
 
-            var datastring = /*"User= " + user + */ "& comment = " + comment;
+    $("#submit").click(function () {
 
-            $.ajax({
-                type: "post",
-                url: "Register",
-                data: datastring,
-                success: function ($data) {
-                    $("#show_stored_data").html($data);
-                    alert("success!");
-                    console.log("success!");
-                },
-                error: function () {
-                    alert("fail");
-                    console.log("fail");
-                }
-            })
-        })
-    })
+        var id = $("#id").val();
+        var user = $("#user").val();
+        var comment = $("#comment").val();
+
+        var datastring = id + " " + user + " " + comment;
+
+        $.ajax({
+            type: "post",
+            url: "Register",
+            data: datastring,
+            success: function ($data) {
+                $("#show_stored_data").html($data);
+                alert("success!");
+            },
+            error: function () {
+                alert("fail");
+            }
+        });
+    });
+
 
 </script>
 
@@ -38,7 +37,6 @@
         <th>Id</th>
         <th>User</th>
         <th>Comment</th>
-        <th>Img</th>
     </tr>
     <tr>
         <td><input type="number" class="form-control" id="id"</td>
@@ -47,10 +45,11 @@
 
     </tr>
 
-
+    <button type="button" class="btn btn-success" id="submit"> Submit  </button>
 </table>
-<button type="button" class="btn btn-success" id="submit"> Submit  </button>
+
 <hr />
+
 Stored Data
 <div id="show_stored_data">
 

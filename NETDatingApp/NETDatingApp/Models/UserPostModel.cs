@@ -8,7 +8,7 @@ using System.Web;
 namespace NETDatingApp.Models {
 
     [Table("UserPost")]
-    public class UserPost {
+    public class UserPostModel {
         [Key]
         public int Id { get; set; } = 1;
         public string User { get; set; }

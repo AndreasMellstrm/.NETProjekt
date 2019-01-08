@@ -54,28 +54,6 @@
             <a class="add-friend" href="">Lägg till vän</a>
 
 
-            <script>
-                $(document).ready(function () {
-                    $("#submit").click(function () {
-                        var user = $("#user").val();
-                        var comment = $("#comment").val();
-
-                        var datastring = "User= " + user + "& comment = " + comment;
-
-                        $.ajax({
-                            type: "post",
-                            url: "Register",
-                            data: datastring,
-                            success: function ($data) {
-                                $("#show_stored_data").html($data);
-                            }
-                        })
-                    })
-                })
-
-            </script>
-
-
             <div class="form-group">
                 <label for="comment" id="user">Vill du skriva något till @Model.Profile.FirstName ?</label>
                 <textarea class="form-control" rows="5" id="comment"></textarea>
