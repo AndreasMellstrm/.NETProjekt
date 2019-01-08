@@ -12,7 +12,7 @@ namespace NETDatingApp.Models
     }
 
     public class ProfileViewModel {
-
+        public PersonProfile Profile { get; set; }
     }
 
     public class ChangeProfileInfoViewModel {
@@ -33,5 +33,11 @@ namespace NETDatingApp.Models
         [Required]
         [Display(Name = "Kön")]
         public string Gender { get; set; }
+    }
+
+    public class FriendsListViewModel {
+        public List<FriendRelationship> FriendRequests { get; set; }
+        public PersonProfile Profile { get; set; }
+        
     }
 }
