@@ -13,6 +13,7 @@ namespace NETDatingApp.Models
 
     public class ProfileViewModel {
         public PersonProfile Profile { get; set; }
+        public FriendRelationship FriendRequest { get; set; }
     }
 
     public class ChangeProfileInfoViewModel {
