@@ -3,7 +3,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Sök användare</h2>
 
 @using (Html.BeginForm("Index", "Search", FormMethod.Get))
 {
@@ -20,7 +20,7 @@
         {
             foreach (var p in Model.ProfileList)
             {
-                <li><div>@p</div></li>
+                <li><div>@{p.FirstName + " " + p.LastName}</div></li>
             }
         }
     </ul> 
