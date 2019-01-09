@@ -24,7 +24,7 @@ namespace NETDatingApp.Models {
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser> {
-        public DbSet<UserPostModel> UserPosts { get; set; }
+        public DbSet<UserPost> UserPost { get; set; }
         public DbSet<PersonProfile> PersonProfiles { get; set; }
         public DbSet<FriendRelationship> FriendRelationships { get; set; }
 
