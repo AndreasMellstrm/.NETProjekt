@@ -1,4 +1,7 @@
-﻿@model NETDatingApp.Models.MyProfileViewModel
+﻿@using NETDatingApp.Models
+@model MyProfileViewModel
+
+
 @{
     ViewBag.Title = "MyProfile";
 }
@@ -14,85 +17,106 @@
             <h1 class="profile-name">@Model.Profile.FirstName @Model.Profile.LastName</h1>
             <p class="profile-bio">@Model.Profile.Bio</p>
 
-
-
-
-            <div class="latest-visitors">
-                <h4> Senaste besökarna</h4>
-                <ul>
-                    <li> <a href=""> Ludvig Lund</a> </li>
-                    <li> <a href=""> Ludvig Mellström</a> </li>
-                    <li> <a href=""> Ludvig Sagtröm</a> </li>
-                    <li> <a href=""> Hugo Mellström </a> </li>
-                    <li> <a href=""> Andreas Sagström  </a> </li>
-                </ul>
-            </div>
             <div class="bio">
                 <ul>
                     <li><span class="bold"> Kön: </span> @Model.Profile.Gender</li>
                     <li><span class="bold"> Ålder: </span> @Model.Profile.Age</li>
-                    
+
                 </ul>
             </div>
+
         </div>
 
+        <div class="friend-list">
+            <h4> Senaste besökarna</h4>
+            <ul>
+                <li> <a href=""> Ludvig Lund</a> </li>
+                <li> <a href=""> Ludvig Mellström</a> </li>
+                <li> <a href=""> Ludvig Sagtröm</a> </li>
+                <li> <a href=""> Hugo Mellström </a> </li>
+                <li> <a href=""> Andreas Sagström  </a> </li>
+            </ul>
+        </div>
+        <div class="friend-list" id="list-margin">
+            <h4> @Model.Profile.FirstName's vänner </h4>
+            <ul>
+                <li> <a href=""> test </a></li>
+                <li> <a href=""> test </a></li>
+                <li> <a href=""> test </a></li>
+                <li> <a href=""> test </a></li>
+                <li> <a href=""> test </a></li>
+            </ul>
+        </div>
 
-        
-
-        <hr />  
+        <hr />
         <div class="profile-container">
 
             <a class="add-friend" href="">Lägg till vän</a>
 
+
+            <script>
+                $(document).ready(function () {
+                    $("#submit").click(function () {
+                        var user = $("#user").val();
+                        var comment = $("#comment").val();
+
+                        var datastring = "User= " + user + "& comment = " + comment;
+
+                        $.ajax({
+                            type: "post",
+                            url: "Register",
+                            data: datastring,
+                            success: function ($data) {
+                                $("#show_stored_data").html($data);
+                            }
+                        })
+                    })
+                })
+
+            </script>
+
+
             <div class="form-group">
-                <label for="comment">Vill du skriva något till *person* ?</label>
+                <label for="comment" id="user">Vill du skriva något till @Model.Profile.FirstName ?</label>
                 <textarea class="form-control" rows="5" id="comment"></textarea>
             </div>
+
+            <button type="button" class="btn" id="submit"> Skicka </button>
+
+
 
 
 
 
             <hr />
             <h3 class="posts-headline"> Senaste inläggen </h3>
-            
-            
-            
+
             <!-- user posts end up here -->
-            <div class="profile-posts">
+            <div id="show_stored_content">
+                <div class="profile-posts">
 
-                <!-- the card that contains everything the user posts -->
-                <div class="post-card">
-                    <div class="post-img">
-                        <img src="~/Content/img/blankProfile.png" />
-                    </div>
-                    <div class="post-content">
-                        <h3 class="post-poster"> <a href=""> Ludvig Lund </a> </h3>
-                        <p> * hej hej!* </p>
-                    </div>
-                </div>
+                    <div class="post-card">
 
-                <div class="post-card">
-                    <div class="post-img">
-                        <img src="~/Content/img/blankProfile.png" />
-                    </div>
-                    <div class="post-content">
-                        <h3 class="post-poster"> <a href=""> Hugo Sagström </a> </h3>
-                        <p> * hejsan vilken fin dag.* </p>
-                    </div>
-                </div>
+                        <div class="post-img">
+                            <img src="" />
+                        </div>
 
-                <div class="post-card">
-                    <div class="post-img">
-                        <img src="~/Content/img/blankProfile.png" />
-                    </div>
-                    <div class="post-content">
-                        <h3 class="post-poster"> <a href=""> Andreas Mellström </a> </h3>
-                        <p> * Hallå hej * </p>
-                    </div>
-                </div>
+                        <div class="post-content">
+                            <h3 class="post-poster"> <a href=""> Användare användaresson </a> </h3>
+                            <p> TextyTexty</p>
+                        </div>
 
 
-            </div> <!-- /profile-posts -->
+
+                    </div>
+
+
+
+
+
+
+                </div> <!-- /profile-posts -->
+            </div>
         </div> <!-- /profile-container -->
     </div> <!-- /fb-profile -->
 

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<NETDatingApp.Models.UserPost>
+
+@{
+    Layout = null;
+}
+<!--
+<div class="post-card">
+    @foreach (var m in Model) {
+        <div class="post-img">
+            <img src="" />
+        </div>
+
+        <div class="post-content">
+            <h3 class="post-poster"><a href=""> Ludvig</a> </h3>
+            <p> @m.Comment </p>
+        </div>
+    }
+</div>
+    -->
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>User</th>
+        <th>Comment</th>
+        <th>Img</th>
+    </tr>
+
+    @foreach (var m in Model) {
+    <tr>
+        <td>@m.Id</td>
+        <td>@m.User</td>
+        <td>@m.Comment</td>
+    </tr>
+
+    <button type="button" class="btn btn-success" id="submit"> </button>
+    }
+</table>
