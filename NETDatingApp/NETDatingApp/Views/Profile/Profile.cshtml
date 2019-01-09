@@ -50,11 +50,14 @@
 
         <hr />
         <div class="profile-container">
-            @if(Model.FriendRequest == null) {
+            @if (Model.FriendRequest == null) {
                 @Html.ActionLink("Lägg till vän", "SendFriendRequest", "Profile", new { Model.Profile.ProfileID }, new { @class = "add-friend" })
             }
-            else if (Model.FriendRequest.IsFriends == false) {
+            else if (Model.FriendRequest.IsFriends == false && Model.FriendRequest.ProfileAId != Model.Profile.ProfileID) {
                 <Label class="label label-default">Vänförfrågan skickad</Label>
+            }
+            else if (Model.FriendRequest.IsFriends == false && Model.FriendRequest.ProfileAId == Model.Profile.ProfileID) {
+                <Label class="label label-default">Vänförfrågan mottagen</Label>
             }
             else {
                 <Label class="label label-default">Redan vänner</Label>

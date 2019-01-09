@@ -40,8 +40,10 @@ namespace NETDatingApp.Controllers
             var profile = profiles[0];
             var currentProfile = GetCurrentProfile();
             var friendrequests = (from fr in ctx.FriendRelationships
-                                  where fr.ProfileAId == currentProfile.ProfileID
-                                  && fr.ProfileBId == profile.ProfileID
+                                  where (fr.ProfileAId == currentProfile.ProfileID
+                                  && fr.ProfileBId == profile.ProfileID) 
+                                  || (fr.ProfileAId == profile.ProfileID
+                                  && fr.ProfileBId == currentProfile.ProfileID)
                                   select fr).ToList();
             if(friendrequests.Count != 0){
                 var friendrequest = friendrequests[0];
