@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -52,7 +53,5 @@ namespace NETDatingApp.Controllers
             await ctx.SaveChangesAsync();
             return RedirectToAction("MyProfile");
         }
-
-
     }
 }

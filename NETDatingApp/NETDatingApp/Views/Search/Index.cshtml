@@ -1,0 +1,28 @@
+﻿@model NETDatingApp.Models.SearchViewModels
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Index", "Search", FormMethod.Get))
+{
+    @Html.TextBox("searchString")<input type="submit" value="Sök" />
+}
+
+<div>
+    <ul>
+        @if (Model.ProfileList.Count() == 0)
+        {
+            <li><div>Inget resultat hittades.</div></li>
+        }
+        else
+        {
+            foreach (var p in Model.ProfileList)
+            {
+                <li><div>@p</div></li>
+            }
+        }
+    </ul> 
+
+</div>
