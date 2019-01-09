@@ -32,6 +32,16 @@ namespace NETDatingApp.Controllers
                 Profile = GetCurrentProfile()
             });
         }
+
+        public ActionResult Profile(int ProfileID) {
+            var profiles = (from p in ctx.PersonProfiles
+                            where p.ProfileID == ProfileID
+                            select p).ToList();
+            var profile = profiles[0];
+            return View(new ProfileViewModel {
+                Profile = profile
+            });
+        }
         public ActionResult ChangeProfileInfo() {
             return View(new ChangeProfileInfoViewModel {
                 Profile = GetCurrentProfile()

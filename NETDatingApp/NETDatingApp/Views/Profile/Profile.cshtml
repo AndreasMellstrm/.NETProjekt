@@ -1,0 +1,115 @@
+﻿@model NETDatingApp.Models.ProfileViewModel
+@{
+    ViewBag.Title = "Profile";
+}
+
+<h2>Profile</h2>
+<div class="container">
+    <div class="fb-profile">
+        <!-- header -->
+        <img align="left" class="fb-image-lg" src="http://lorempixel.com/850/280/nightlife/5/" alt="Profile image example" />
+
+        <!-- Thumbnail -->
+        <img align="left" class="fb-image-profile thumbnail" src="~/Content/img/blankProfile.png" alt="Profile image example" />
+        <div class="fb-profile-text">
+            <h1 class="profile-name">@Model.Profile.FirstName @Model.Profile.LastName</h1>
+            <p class="profile-bio">@Model.Profile.Bio</p>
+
+            <div class="bio">
+                <ul>
+                    <li><span class="bold"> Kön: </span> @Model.Profile.Gender</li>
+                    <li><span class="bold"> Ålder: </span> @Model.Profile.Age</li>
+
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="friend-list">
+            <h4> Senaste besökarna</h4>
+            <ul>
+                <li> <a href=""> Ludvig Lund</a> </li>
+                <li> <a href=""> Ludvig Mellström</a> </li>
+                <li> <a href=""> Ludvig Sagtröm</a> </li>
+                <li> <a href=""> Hugo Mellström </a> </li>
+                <li> <a href=""> Andreas Sagström  </a> </li>
+            </ul>
+        </div>
+        <div class="friend-list" id="list-margin">
+            <h4> @Model.Profile.FirstName's vänner </h4>
+            <ul>
+                <li> <a href=""> test </a></li>
+                <li> <a href=""> test </a></li>
+                <li> <a href=""> test </a></li>
+                <li> <a href=""> test </a></li>
+                <li> <a href=""> test </a></li>
+            </ul>
+        </div>
+
+        <hr />
+        <div class="profile-container">
+
+            <a class="add-friend" href="">Lägg till vän</a>
+
+
+            <script>
+                $(document).ready(function () {
+                    $("#submit").click(function () {
+                        var user = $("#user").val();
+                        var comment = $("#comment").val();
+
+                        var datastring = "User= " + user + "& comment = " + comment;
+
+                        $.ajax({
+                            type: "post",
+                            url: "Register",
+                            data: datastring,
+                            success: function ($data) {
+                                $("#show_stored_data").html($data);
+                            }
+                        })
+                    })
+                })
+
+            </script>
+
+
+            <div class="form-group">
+                <label for="comment" id="user">Vill du skriva något till @Model.Profile.FirstName ?</label>
+                <textarea class="form-control" rows="5" id="comment"></textarea>
+            </div>
+
+            <button type="button" class="btn" id="submit"> Skicka </button>
+
+
+
+
+
+
+            <hr />
+            <h3 class="posts-headline"> Senaste inläggen </h3>
+
+            <!-- user posts end up here -->
+            <div id="show_stored_content">
+                <div class="profile-posts">
+
+                    <div class="post-card">
+
+                        <div class="post-img">
+                            <img src="" />
+                        </div>
+
+                        <div class="post-content">
+                            <h3 class="post-poster"> <a href=""> Användare användaresson </a> </h3>
+                            <p> TextyTexty</p>
+                        </div>
+
+
+
+                    </div>
+                </div> <!-- /profile-posts -->
+            </div>
+        </div> <!-- /profile-container -->
+    </div> <!-- /fb-profile -->
+
+</div> <!-- /container -->
