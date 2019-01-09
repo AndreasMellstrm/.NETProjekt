@@ -274,10 +274,12 @@
     <Content Include="Views\Profile\MyProfile.cshtml" />
     <Content Include="Views\Manage\ChangeEmail.cshtml" />
     <Content Include="Views\Profile\ChangeProfileInfo.cshtml" />
+    <Content Include="Views\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\img\" />
+    <Folder Include="Views\NewFolder1\" />
     <Folder Include="Views\PersonProfile\" />
   </ItemGroup>
   <ItemGroup>

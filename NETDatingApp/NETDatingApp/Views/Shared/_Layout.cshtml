@@ -1,5 +1,4 @@
 ﻿@using Microsoft.AspNet.Identity;
-@model NETDatingApp.Models.SearchViewModels
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +30,7 @@
                     }
                     <li>@Html.ActionLink("Sök användare", "Index", "Search")</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+                @{Html.RenderAction("_LoginPartial","Profile");}
             </div>
         </div>
     </div>
