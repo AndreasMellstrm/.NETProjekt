@@ -207,6 +207,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PersonModels.cs" />
     <Compile Include="Models\ProfileViewModels.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Models\SearchViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -272,7 +274,6 @@
     <Content Include="Views\Profile\MyProfile.cshtml" />
     <Content Include="Views\Manage\ChangeEmail.cshtml" />
     <Content Include="Views\Profile\ChangeProfileInfo.cshtml" />
-    <Content Include="Views\Profile\FriendsList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

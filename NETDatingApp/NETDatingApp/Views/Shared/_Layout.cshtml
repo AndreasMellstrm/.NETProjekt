@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity;
+@model NETDatingApp.Models.SearchViewModels
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,20 +29,9 @@
                     @if (System.Web.HttpContext.Current.User != null && System.Web.HttpContext.Current.User.Identity.IsAuthenticated) {
                         <li>@Html.ActionLink("Min profil", "MyProfile", "Profile")</li>
                     }
-                    <li>
-                        <div id="custom-search-input">
-                            <div class="input-group col-md-12">
-                                <input type="text" class="form-control input-lg" placeholder="Buscar" />
-                                <span class="input-group-btn">
-                                    <button class="btn btn-info btn-lg" type="button">
-                                        <i class="glyphicon glyphicon-search"></i>
-                                    </button>
-                                </span>
-                            </div>
-                        </div>
-                    </li>
+                    <li>@Html.ActionLink("Sök användare", "Index", "Search")</li>
                 </ul>
-                @{Html.RenderAction("_LoginPartial","Profile");}
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
