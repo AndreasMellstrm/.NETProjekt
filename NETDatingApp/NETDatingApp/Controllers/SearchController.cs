@@ -20,10 +20,9 @@ namespace NETDatingApp.Models
         // GET: Search
         public ActionResult Index(String searchString)
         {
-            //return View(ctx.PersonProfiles.Where(s => (s.FirstName + ' ' + s.LastName).Contains(searchString) || searchString == null).ToList());
             var profiles = (from p in ctx.PersonProfiles
-                            where (p.FirstName + " " + p.LastName).Contains(searchString)
-                            select p).ToList();
+                where (p.FirstName + " " + p.LastName).Contains(searchString)
+                select p).ToList();
 
             return View(new SearchViewModels {
                 ProfileList = profiles
