@@ -36,8 +36,12 @@ namespace NETDatingApp.Models
     }
 
     public class FriendsListViewModel {
-        public List<FriendRelationship> FriendRequests { get; set; }
+        public List<FriendRelationship> Friends{ get; set; }
         public PersonProfile Profile { get; set; }
         
+    }
+
+    public class FriendRequestViewModel {
+        public List<FriendRelationship> FriendRequests { get; set; }
     }
 }
