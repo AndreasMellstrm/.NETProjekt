@@ -2,22 +2,22 @@
 @{
     ViewBag.Title = "FriendsList";
 }
-<h2>FriendsList</h2>
+<h2>Dina vänner</h2>
 <div>
     @foreach (var fr in Model.Friends) {
         var Friend = Model.Profile;
-        if(fr.ProfileAId == Model.Profile.ProfileID) {
+        if (fr.ProfileAId == Model.Profile.ProfileID) {
             Friend = fr.ProfileB;
         }
-        else if(fr.ProfileBId == Model.Profile.ProfileID) {
+        else if (fr.ProfileBId == Model.Profile.ProfileID) {
             Friend = fr.ProfileA;
         }
-    <div>
-        <img src="@Friend.ProfileImg" class="rounded-circle" style="width: 50px; height: 50px;">
-        <div class="text-left user-item" style="display: inline-block; margin-left: 10px; width: 100px;">
-           @Html.ActionLink(@Friend.FirstName + " " + @Friend.LastName, "Profile", "Profile", new { Friend.ProfileID }, null)
+    <div class="row">
+        <div class="col-md-2 col-sm-2">
+            <img src="@Friend.ProfileImg" class="rounded-circle" style="width: 50px; height: 50px;">
+            @Html.ActionLink(@Friend.FirstName + " " + @Friend.LastName, "Profile", "Profile", new { Friend.ProfileID })
         </div>
     </div>
-        <div class="dropdown-divider"></div> 
     }
 </div>
+
