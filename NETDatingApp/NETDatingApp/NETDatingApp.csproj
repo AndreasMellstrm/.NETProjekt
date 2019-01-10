@@ -278,6 +278,7 @@
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Profile\Profile.cshtml" />
     <Content Include="Views\Profile\FriendsList.cshtml" />
+    <Content Include="Views\Profile\ChangeProfileImg.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

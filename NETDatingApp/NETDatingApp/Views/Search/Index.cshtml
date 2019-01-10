@@ -5,39 +5,33 @@
 
 <h2>Index</h2>
 
-@using (Html.BeginForm("Index", "Search", FormMethod.Get))
-{
+@using (Html.BeginForm("Index", "Search", FormMethod.Get)) {
     @Html.TextBox("searchString")<input type="submit" value="Sök" />
 }
 
 <div>
     <ul>
-        @if (Model.ProfileList.Count() == 0)
-        {
+        @if (Model.ProfileList.Count() == 0) {
             <li><div>Inget resultat hittades.</div></li>
         }
-        else
-        {
-            foreach (var p in Model.ProfileList)
-            {
-            <li>
-                <div class="col-xs-12 col-sm-3">
-                    <img src="@p.ProfileImg" class="rounded-circle" style="width: 50px; height: 50px;" />
-                </div>
-                <div>
-                    @{ if (System.Web.HttpContext.Current.User != null && System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
-                        {
-                            @Html.ActionLink(p.FirstName + " " + p.LastName, "Profile", "Profile", new { p.ProfileID }, null);
+        else {
+            foreach (var p in Model.ProfileList) {
+                <li>
+                    <div class="col-xs-12 col-sm-3">
+                        <img src="@p.ProfileImg" class="rounded-circle" style="width: 50px; height: 50px;" />
+                    </div>
+                    <div>
+                        @{ if (System.Web.HttpContext.Current.User != null && System.Web.HttpContext.Current.User.Identity.IsAuthenticated) {
+                                @Html.ActionLink(p.FirstName + " " + p.LastName, "Profile", "Profile", new { p.ProfileID }, null);
+                            }
+                            else {
+                                @Html.ActionLink(p.FirstName + " " + p.LastName, "Login", "Account");
+                            }
                         }
-                        else
-                        {
-                            @Html.ActionLink(p.FirstName + " " + p.LastName, "Login", "Account");
-                        }
-                    }
-                </div>
-            </li>      
+                    </div>
+                </li>
             }
         }
-    </ul> 
+    </ul>
 
 </div>

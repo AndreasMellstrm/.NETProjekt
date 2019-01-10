@@ -4,10 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace NETDatingApp.Models
-{
-    public class MyProfileViewModel
-    {   
+namespace NETDatingApp.Models {
+    public class MyProfileViewModel {
         public PersonProfile Profile { get; set; }
     }
 
@@ -31,15 +29,19 @@ namespace NETDatingApp.Models
         [Display(Name = "Ålder")]
         public int Age { get; set; }
 
+        [Display(Name ="Bio")]
+        public string Bio { get; set; }
+
+
         [Required]
         [Display(Name = "Kön")]
         public string Gender { get; set; }
     }
 
     public class FriendsListViewModel {
-        public List<FriendRelationship> Friends{ get; set; }
+        public List<FriendRelationship> Friends { get; set; }
         public PersonProfile Profile { get; set; }
-        
+
     }
 
     public class FriendRequestViewModel {
