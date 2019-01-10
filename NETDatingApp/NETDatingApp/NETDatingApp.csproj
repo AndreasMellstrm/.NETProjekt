@@ -279,6 +279,7 @@
     <Content Include="Views\Profile\Profile.cshtml" />
     <Content Include="Views\Profile\FriendsList.cshtml" />
     <Content Include="Views\Profile\ChangeProfileImg.cshtml" />
+    <Content Include="Views\Shared\_ExampleUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
