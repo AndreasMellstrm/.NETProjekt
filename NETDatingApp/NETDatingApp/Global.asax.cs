@@ -14,6 +14,7 @@ namespace NETDatingApp
     {
         protected void Application_Start()
         {
+            System.Web.Http.GlobalConfiguration.Configure(App_Start.WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
