@@ -7,8 +7,10 @@ using System.Web.Mvc;
 
 namespace NETDatingApp.Controllers {
     public class HomeController : Controller {
+
         public ActionResult Index() {
-            return View();
+            ApplicationDbContext db = new ApplicationDbContext();
+            return View(db.PersonProfiles.ToList().Take(3));
         }
 
         public ActionResult About() {
@@ -28,5 +30,6 @@ namespace NETDatingApp.Controllers {
 
             return View();
         }
+
     }
 }
