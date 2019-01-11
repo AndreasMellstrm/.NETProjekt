@@ -25,8 +25,8 @@ namespace NETDatingApp.Models {
         [InverseProperty("Requester")]
         public virtual ICollection<FriendRelationship> SentRequest { get; set; }
 
-        [InverseProperty("ProfileB")]
-        public virtual ICollection<FriendRelationship> ProfileBFriendRelationship { get; set; }
+        [InverseProperty("Reciever")]
+        public virtual ICollection<FriendRelationship> RecievedRequest { get; set; }
 
 
         public PersonProfile() {
