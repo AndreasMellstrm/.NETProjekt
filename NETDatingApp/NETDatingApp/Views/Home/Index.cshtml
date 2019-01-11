@@ -12,26 +12,28 @@
 </div>
 
 @{
-    var x = "Login";
-    var y = "Account";
-    if (System.Web.HttpContext.Current.User != null && System.Web.HttpContext.Current.User.Identity.IsAuthenticated) {
-        x = "MyProfile";
-        y = "Profile";
-    }
+
 }
 
 
 <div class="row">
-    @foreach(var item in Model) {
-        <div class="profile-card">
+    @foreach (var item in Model) {
 
+        var x = "Login";
+        var y = "Account";
+        if (System.Web.HttpContext.Current.User != null && System.Web.HttpContext.Current.User.Identity.IsAuthenticated) {
+            x = "MyProfile";
+            y = "Profile";
+        }
+
+        <div class="profile-card">
             @Html.Partial("_ExampleUser", item)
 
-
-            <a href='@Url.Action(x, y)' class="btn btn-default"> Vill du veta mer? </a>
+            <a href='@Url.Action(x, y)'> @Html.ActionLink("Läs mer", "Profile", "profile", new { @item.ProfileID }, new { @class = "profile-card-link" }) </a>
         </div>
     }
 </div>
+
 
 
 
