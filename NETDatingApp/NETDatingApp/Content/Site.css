@@ -3,6 +3,7 @@
     padding-bottom: 20px;
     background-color: #e9ebee;
 }
+
 .container {
     background-color: white;
 }
@@ -26,57 +27,65 @@ select,
 textarea {
     max-width: 280px;
 }
+
 .navbar-inverse .navbar-nav > li > a {
     background-color: #f4b342;
     color: black;
 }
-.navbar, .navbar-inverse, .navbar-fixed-top, .navbar-collapse, .navbar-brand{
+
+.navbar, .navbar-inverse, .navbar-fixed-top, .navbar-collapse, .navbar-brand {
     background-color: #f4b342;
 }
 
-.navbar-inverse .navbar-brand {
-    color: black;
-}
+    .navbar-inverse .navbar-brand {
+        color: black;
+    }
 
 
 /* Profile-card on landing page */
-.profile-card{
+.profile-card {
     width: 31.6%;
-    height: 33%;
+    height: 200px;
     padding: 10px 5px 10px 10px;
     margin: 0 0 10px 15px;
     border: 1px solid rgba(128, 128, 128,0.4);
 }
-.card-content{
+
+.card-content {
     display: flex;
 }
-.card-name{
+
+.card-name {
     margin: 10px 10px 10px 0;
     border-bottom: 1px solid rgb(229, 229, 229);
     padding-bottom: 10px;
 }
-.card-img{
+
+.card-img {
     height: 30%;
     width: 35%;
     margin-bottom: 10px;
 }
-.card-bio{
+
+.card-bio {
     padding: 0 0 0 10px;
 }
 
-.row{
+.row {
     display: flex;
 }
-.profile-card .btn{
+
+.profile-card .btn {
     width: 35%;
     padding: 3px 5px 3px 5px;
 }
 /* /Ladning page */
 
 /* Profile page */
-fb-profile{
+fb-profile {
     max-width: 100%;
 }
+
 .fb-profile img.fb-image-lg {
     z-index: 0;
     width: 100%;
@@ -102,18 +111,22 @@ fb-profile{
         width: 20%;
     }
 }
-.bio{
+
+.bio {
     overflow: hidden;
 }
-.bio ul{
-    padding: 0;
-}
-.bio li{
-    list-style: none;
-}
-.bio .bold{
-    font-weight: bold;
-}
+
+    .bio ul {
+        padding: 0;
+    }
+
+    .bio li {
+        list-style: none;
+    }
+
+    .bio .bold {
+        font-weight: bold;
+    }
 
 .add-friend {
     padding: 10px;
@@ -121,43 +134,48 @@ fb-profile{
     text-decoration: none;
     border: 2px solid rgba(231,166,26,1)
 }
-.add-friend a{
-    color: black;
-    border:2px solid rgba(231,166,26,0.66) 
-}
 
-.add-friend:hover {
-    background-color: #f4b342;
-    text-decoration: none;
-}
-.add-friend:visited{
-    text-decoration: none;
-    color: black;
-}
+    .add-friend a {
+        color: black;
+        border: 2px solid rgba(231,166,26,0.66)
+    }
+
+    .add-friend:hover {
+        background-color: #f4b342;
+        text-decoration: none;
+    }
+
+    .add-friend:visited {
+        text-decoration: none;
+        color: black;
+    }
 
 .friend-list {
     float: right;
     display: inline-block;
     border: 1px solid rgba(0, 0, 0, 0.1);
     margin-top: -135px;
-
     padding: 5px 15px 5px 10px;
     max-height: 100%;
     max-width: 100%;
 }
-.friend-list h4 {
-    margin-top: 2px;
-    padding: 0;
-}
-.friend-list ul {
-    padding: 0;
-    margin: 0;
-}
-.friend-list li {
-    list-style: none;
-    margin-bottom: 2px;
-}
-#list-margin{
+
+    .friend-list h4 {
+        margin-top: 2px;
+        padding: 0;
+    }
+
+    .friend-list ul {
+        padding: 0;
+        margin: 0;
+    }
+
+    .friend-list li {
+        list-style: none;
+        margin-bottom: 2px;
+    }
+
+#list-margin {
     margin-right: 5px;
 }
 
@@ -166,19 +184,20 @@ fb-profile{
 
 /* profile posts*/
 
-.profile-container{
+.profile-container {
     margin-left: 50px;
     padding: 0;
 }
-.form-group{
+
+.form-group {
     margin: 10px 0 0 0;
 }
-.form-control{
-    width: 100%;
 
+.form-control {
+    width: 100%;
 }
 
-.profile-container .button{
+.profile-container .button {
     margin-top: 5px;
 }
 
@@ -191,41 +210,44 @@ fb-profile{
     padding: 0 0 0 0;
     max-height: 150px;
     display: flex;
-    
 }
-.post-card a{
-    color:black;
-    cursor: pointer;
-}
-.post-card a:hover{
-    text-decoration: underline;
-}
-.post-card a:visited{
-    color:black;
-}
+
+    .post-card a {
+        color: black;
+        cursor: pointer;
+    }
+
+        .post-card a:hover {
+            text-decoration: underline;
+        }
+
+        .post-card a:visited {
+            color: black;
+        }
 
 
 .post-img {
     height: 150px;
     flex: 0 0 25%;
 }
-.post-img img{
-    max-height: 100%;
-    max-width: 100%;
-}
 
-.post-content{
+    .post-img img {
+        max-height: 100%;
+        max-width: 100%;
+    }
+
+.post-content {
     flex: 1;
     max-width: 75%;
     overflow: hidden;
 }
+
 .post-poster {
     font-weight: bold;
-
 }
+
 .post-card p {
     margin: 0 0 10px 0;
-
 }
 
 /* /post-card */

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using NETDatingApp.Models;
+
 
 namespace NETDatingApp.Controllers
 {
@@ -23,8 +25,8 @@ namespace NETDatingApp.Controllers
                             join user in ctx.Users on p.ProfileID equals user.ProfileID
                             where user.Id == userId
                             select p).ToList();
+            
             return profiles[0];
-
         }
 
         public ActionResult MyProfile() {
@@ -38,9 +40,25 @@ namespace NETDatingApp.Controllers
                             where p.ProfileID == ProfileID
                             select p).ToList();
             var profile = profiles[0];
-            return View(new ProfileViewModel {
-                Profile = profile
-            });
+            var currentProfile = GetCurrentProfile();
+            var friendrequests = (from fr in ctx.FriendRelationships
+                                  where (fr.ProfileAId == currentProfile.ProfileID
+                                  && fr.ProfileBId == profile.ProfileID) 
+                                  || (fr.ProfileAId == profile.ProfileID
+                                  && fr.ProfileBId == currentProfile.ProfileID)
+                                  select fr).ToList();
+            if(friendrequests.Count != 0){
+                var friendrequest = friendrequests[0];
+                return View(new ProfileViewModel {
+                    Profile = profile,
+                    FriendRequest = friendrequest
+                });
+            }
+            else {
+                return View(new ProfileViewModel {
+                    Profile = profile
+                });
+            }
         }
         public ActionResult ChangeProfileInfo() {
             return View(new ChangeProfileInfoViewModel {
@@ -58,9 +76,35 @@ namespace NETDatingApp.Controllers
             profile.FirstName = model.FirstName;
             profile.LastName = model.LastName;
             profile.Age = model.Age;
+            profile.Bio = model.Bio;
             profile.Gender = model.Gender;
             await ctx.SaveChangesAsync();
             return RedirectToAction("MyProfile");
+        }
+
+        public ActionResult ChangeProfileImg() {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> ChangeProfileImg(HttpPostedFileBase file) {
+            if (file != null && file.ContentLength > 0)
+                try {
+                    string path = Path.Combine(Server.MapPath("~\\Content\\Img"),
+                                               Path.GetFileName(file.FileName));
+                    file.SaveAs(path);
+                    var Profile = GetCurrentProfile();
+                    Profile.ProfileImg = Path.Combine("\\Content\\Img", Path.GetFileName(file.FileName));
+                    await ctx.SaveChangesAsync();
+                    return Redirect("MyProfile");
+                }
+                catch (Exception ex) {
+                    ViewBag.Message = "ERROR:" + ex.Message.ToString();
+                }
+            else {
+                ViewBag.Message = "You have not specified a file.";
+            }
+            return View();
         }
 
         public ActionResult FriendsList() {
@@ -90,12 +134,12 @@ namespace NETDatingApp.Controllers
             }
         }
 
-        [HttpPost]
-        public async Task<ActionResult> SendFriendRequest(int ReceiverID) {
+        
+        public async Task<ActionResult> SendFriendRequest(int ProfileID) {
             int RequestorID = GetCurrentProfile().ProfileID;
             var fr = new FriendRelationship {
                 ProfileAId = RequestorID,
-                ProfileBId = ReceiverID,
+                ProfileBId = ProfileID,
                 IsFriends = false
             };
             ctx.FriendRelationships.Add(fr);

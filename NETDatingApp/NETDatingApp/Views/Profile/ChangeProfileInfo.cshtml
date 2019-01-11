@@ -19,13 +19,19 @@
     <div class="form-group">
         @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.LastName, new {@Value = Model.Profile.LastName, @class = "form-control" })
+            @Html.TextBoxFor(m => m.LastName, new { @Value = Model.Profile.LastName, @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Age, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Age, new {@Value = Model.Profile.Age, @min = "0", @max = "130", @class = "form-control" })
+            @Html.TextBoxFor(m => m.Age, new { @Value = Model.Profile.Age, @min = "0", @max = "130", @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Bio, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.Bio, new { @Value = Model.Profile.Bio, @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
