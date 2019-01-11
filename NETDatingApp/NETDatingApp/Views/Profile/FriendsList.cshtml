@@ -7,10 +7,10 @@
     @foreach (var fr in Model.Friends) {
         var Friend = Model.Profile;
         if (fr.RequesterID == Model.Profile.ProfileID) {
-            Friend = fr.Reciever;
+            Friend = fr.FriendReciever;
         }
         else if (fr.RecieverID == Model.Profile.ProfileID) {
-            Friend = fr.Requester;
+            Friend = fr.FriendRequester;
         }
     <div class="row">
         <div class="col-md-2 col-sm-2">

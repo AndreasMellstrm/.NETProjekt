@@ -26,9 +26,9 @@
             <div class="dropdown-divider"></div>
             @foreach (var fr in Model.FriendRequests) {
                 <a class="dropdown-item" href="#">
-                    <img src="@fr.Requester.ProfileImg" class="rounded-circle" style="width: 50px; height: 50px;">
+                    <img src="@fr.FriendRequester.ProfileImg" class="rounded-circle" style="width: 50px; height: 50px;">
                     <div class="text-left user-item" style="display: inline-block; margin-left: 10px; width: 100px;">
-                        @fr.Requester.FirstName @fr.Requester.LastName
+                        @fr.FriendRequester.FirstName @fr.FriendRequester.LastName
                     </div>
                     <span class="text-right">
                         @Html.ActionLink("Accept", "AcceptFriendRequest", "Profile", new { fr.RequesterID }, new { @class = "btn btn-primary btn-sm" });

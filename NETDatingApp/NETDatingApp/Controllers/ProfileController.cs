@@ -36,28 +36,39 @@ namespace NETDatingApp.Controllers
         }
 
         public ActionResult Profile(int ProfileID) {
-            var profiles = (from p in ctx.PersonProfiles
-                            where p.ProfileID == ProfileID
-                            select p).ToList();
-            var profile = profiles[0];
-            var currentProfile = GetCurrentProfile();
-            var friendrequests = (from fr in ctx.FriendRelationships
-                                  where (fr.RequesterID == currentProfile.ProfileID
-                                  && fr.RecieverID == profile.ProfileID) 
-                                  || (fr.RequesterID == profile.ProfileID
-                                  && fr.RecieverID == currentProfile.ProfileID)
-                                  select fr).ToList();
-            if(friendrequests.Count != 0){
-                var friendrequest = friendrequests[0];
-                return View(new ProfileViewModel {
-                    Profile = profile,
-                    FriendRequest = friendrequest
-                });
+            if (ProfileID != GetCurrentProfile().ProfileID)
+            {
+                var profiles = (from p in ctx.PersonProfiles
+                                where p.ProfileID == ProfileID
+                                select p).ToList();
+                var profile = profiles[0];
+                var currentProfile = GetCurrentProfile();
+                var friendrequests = (from fr in ctx.FriendRelationships
+                                      where (fr.RequesterID == currentProfile.ProfileID
+                                      && fr.RecieverID == profile.ProfileID)
+                                      || (fr.RequesterID == profile.ProfileID
+                                      && fr.RecieverID == currentProfile.ProfileID)
+                                      select fr).ToList();
+                if (friendrequests.Count != 0)
+                {
+                    var friendrequest = friendrequests[0];
+                    return View(new ProfileViewModel
+                    {
+                        Profile = profile,
+                        FriendRequest = friendrequest
+                    });
+                }
+                else
+                {
+                    return View(new ProfileViewModel
+                    {
+                        Profile = profile
+                    });
+                }
             }
-            else {
-                return View(new ProfileViewModel {
-                    Profile = profile
-                });
+            else
+            {
+                return RedirectToAction("MyProfile", "Profile");
             }
         }
         public ActionResult ChangeProfileInfo() {

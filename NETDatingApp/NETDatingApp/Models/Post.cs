@@ -21,11 +21,11 @@ namespace NETDatingApp.Models
 
         [ForeignKey("SenderID")]
         [InverseProperty("SentPosts")]
-        public virtual PersonProfile SenderProfile { get; set; }
+        public virtual PersonProfile PostSender { get; set; }
 
         [ForeignKey("RecieverID")]
         [InverseProperty("RecievedPosts")]
-        public virtual PersonProfile RecieverProfile { get; set; }
+        public virtual PersonProfile PostReciever{ get; set; }
     }
 }
         

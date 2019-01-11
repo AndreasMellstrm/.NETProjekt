@@ -22,17 +22,23 @@ namespace NETDatingApp.Models {
         public string ProfileImg { get; set; }
         public virtual ICollection<ApplicationUser> ApplicationUsers { get; set; }
         
-        [InverseProperty("Requester")]
+        [InverseProperty("FriendRequester")]
         public virtual ICollection<FriendRelationship> SentRequest { get; set; }
 
-        [InverseProperty("ProfileB")]
-        public virtual ICollection<FriendRelationship> ProfileBFriendRelationship { get; set; }
+        [InverseProperty("FriendReciever")]
+        public virtual ICollection<FriendRelationship> RecievedRequest{ get; set; }
+
+        [InverseProperty("PostSender")]
+        public virtual ICollection<Post> SentPosts { get; set; }
+
+         [InverseProperty("PostReciever")]
+        public virtual ICollection<Post> RecievedPosts { get; set; }
 
 
         public PersonProfile() {
 
         }
-        public PersonProfile(string FirstName, string LastName, string Gender, int Age, string Bio = "Biografi saknas", string ProfileImg = @"~/Content/img/blankProfile.png") {
+        public PersonProfile(string FirstName, string LastName, string Gender, int Age, string Bio = "Biografi saknas", string ProfileImg = @"/Content/img/blankProfile.png") {
             this.FirstName = FirstName;
             this.LastName = LastName;
             this.Gender = Gender;
@@ -57,11 +63,11 @@ namespace NETDatingApp.Models {
 
         [ForeignKey("RequesterID")]
         [InverseProperty("SentRequest")]
-        public virtual PersonProfile Requester { get; set; }
+        public virtual PersonProfile FriendRequester { get; set; }
 
         [ForeignKey("RecieverID")]
         [InverseProperty("RecievedRequest")]
-        public virtual PersonProfile Reciever { get; set; }
+        public virtual PersonProfile FriendReciever { get; set; }
 
         public bool IsFriends { get; set; }
 
