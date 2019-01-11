@@ -27,6 +27,10 @@ namespace NETDatingApp.Models {
 
         [InverseProperty("ProfileB")]
         public virtual ICollection<FriendRelationship> ProfileBFriendRelationship { get; set; }
+        [InverseProperty("SenderProfile")]
+        public virtual ICollection<Post> SentPosts { get; set; }
+        [InverseProperty("RecieverProfile")]
+        public virtual ICollection<Post> RecievedPosts { get; set; }
 
 
         public PersonProfile() {
