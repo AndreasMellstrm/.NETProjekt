@@ -22,15 +22,11 @@ namespace NETDatingApp.Models {
         public string ProfileImg { get; set; }
         public virtual ICollection<ApplicationUser> ApplicationUsers { get; set; }
         
-        [InverseProperty("ProfileA")]
-        public virtual ICollection<FriendRelationship> ProfileAFriendRelationship { get; set; }
+        [InverseProperty("Requester")]
+        public virtual ICollection<FriendRelationship> SentRequest { get; set; }
 
         [InverseProperty("ProfileB")]
         public virtual ICollection<FriendRelationship> ProfileBFriendRelationship { get; set; }
-        [InverseProperty("SenderProfile")]
-        public virtual ICollection<Post> SentPosts { get; set; }
-        [InverseProperty("RecieverProfile")]
-        public virtual ICollection<Post> RecievedPosts { get; set; }
 
 
         public PersonProfile() {
@@ -44,8 +40,8 @@ namespace NETDatingApp.Models {
             this.Bio = Bio;
             this.ProfileImg = ProfileImg;
             ApplicationUsers = new HashSet<ApplicationUser>();
-            ProfileAFriendRelationship = new HashSet<FriendRelationship>();
-            ProfileBFriendRelationship = new HashSet<FriendRelationship>();
+            SentRequest = new HashSet<FriendRelationship>();
+            RecievedRequest = new HashSet<FriendRelationship>();
 
         }
 
@@ -54,18 +50,18 @@ namespace NETDatingApp.Models {
     public class FriendRelationship {
 
         [Key, Column(Order = 0)]
-        public int ProfileAId { get; set; }
+        public int RequesterID { get; set; }
 
         [Key, Column(Order = 1)]
-        public int ProfileBId { get; set; }
+        public int RecieverID { get; set; }
 
-        [ForeignKey("ProfileAId")]
-        [InverseProperty("ProfileAFriendRelationship")]
-        public virtual PersonProfile ProfileA { get; set; }
+        [ForeignKey("RequesterID")]
+        [InverseProperty("SentRequest")]
+        public virtual PersonProfile Requester { get; set; }
 
-        [ForeignKey("ProfileBId")]
-        [InverseProperty("ProfileBFriendRelationship")]
-        public virtual PersonProfile ProfileB { get; set; }
+        [ForeignKey("RecieverID")]
+        [InverseProperty("RecievedRequest")]
+        public virtual PersonProfile Reciever { get; set; }
 
         public bool IsFriends { get; set; }
 

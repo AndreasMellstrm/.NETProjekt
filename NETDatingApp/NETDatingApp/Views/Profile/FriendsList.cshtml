@@ -6,11 +6,11 @@
 <div>
     @foreach (var fr in Model.Friends) {
         var Friend = Model.Profile;
-        if (fr.ProfileAId == Model.Profile.ProfileID) {
-            Friend = fr.ProfileB;
+        if (fr.RequesterID == Model.Profile.ProfileID) {
+            Friend = fr.Reciever;
         }
-        else if (fr.ProfileBId == Model.Profile.ProfileID) {
-            Friend = fr.ProfileA;
+        else if (fr.RecieverID == Model.Profile.ProfileID) {
+            Friend = fr.Requester;
         }
     <div class="row">
         <div class="col-md-2 col-sm-2">

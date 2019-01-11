@@ -42,10 +42,10 @@ namespace NETDatingApp.Controllers
             var profile = profiles[0];
             var currentProfile = GetCurrentProfile();
             var friendrequests = (from fr in ctx.FriendRelationships
-                                  where (fr.ProfileAId == currentProfile.ProfileID
-                                  && fr.ProfileBId == profile.ProfileID) 
-                                  || (fr.ProfileAId == profile.ProfileID
-                                  && fr.ProfileBId == currentProfile.ProfileID)
+                                  where (fr.RequesterID == currentProfile.ProfileID
+                                  && fr.RecieverID == profile.ProfileID) 
+                                  || (fr.RequesterID == profile.ProfileID
+                                  && fr.RecieverID == currentProfile.ProfileID)
                                   select fr).ToList();
             if(friendrequests.Count != 0){
                 var friendrequest = friendrequests[0];
@@ -112,8 +112,8 @@ namespace NETDatingApp.Controllers
             return View(new FriendsListViewModel {
                 Profile = profile,
                 Friends = (from fr in ctx.FriendRelationships
-                           where fr.ProfileAId == profile.ProfileID
-                           || fr.ProfileBId == profile.ProfileID
+                           where fr.RequesterID == profile.ProfileID
+                           || fr.RecieverID == profile.ProfileID
                            && fr.IsFriends == true
                            select fr).ToList()
             });
@@ -125,7 +125,7 @@ namespace NETDatingApp.Controllers
                 return PartialView(new FriendRequestViewModel {
                     FriendRequests = (from fr in ctx.FriendRelationships
                                       where fr.IsFriends == false
-                                      where fr.ProfileBId == currentProfile.ProfileID
+                                      where fr.RecieverID == currentProfile.ProfileID
                                       select fr).ToList()
                 });
             }
@@ -138,8 +138,8 @@ namespace NETDatingApp.Controllers
         public async Task<ActionResult> SendFriendRequest(int ProfileID) {
             int RequestorID = GetCurrentProfile().ProfileID;
             var fr = new FriendRelationship {
-                ProfileAId = RequestorID,
-                ProfileBId = ProfileID,
+                RequesterID = RequestorID,
+                RecieverID = ProfileID,
                 IsFriends = false
             };
             ctx.FriendRelationships.Add(fr);
@@ -147,11 +147,11 @@ namespace NETDatingApp.Controllers
             return Redirect(Request.UrlReferrer.AbsoluteUri); ;
         }
 
-        public async Task<ActionResult> AcceptFriendRequest(int ProfileAId) {
-            int ProfileBId = GetCurrentProfile().ProfileID;
+        public async Task<ActionResult> AcceptFriendRequest(int RequesterID) {
+            int RecieverID = GetCurrentProfile().ProfileID;
             var friendRelationships = (from fr in ctx.FriendRelationships
-                                      where fr.ProfileAId == ProfileAId
-                                      where fr.ProfileBId == ProfileBId
+                                      where fr.RequesterID == RequesterID
+                                      where fr.RecieverID == RecieverID
                                       select fr).ToList();
             var friendRelationship = friendRelationships[0];
             friendRelationship.IsFriends = true;
@@ -159,11 +159,11 @@ namespace NETDatingApp.Controllers
             return Redirect(Request.UrlReferrer.AbsoluteUri);
         }
 
-        public async Task<ActionResult> DeclineFriendRequest(int ProfileAId) {
-            int ProfileBId = GetCurrentProfile().ProfileID;
+        public async Task<ActionResult> DeclineFriendRequest(int RequesterID) {
+            int RecieverID = GetCurrentProfile().ProfileID;
             var friendRelationships = (from fr in ctx.FriendRelationships
-                                       where fr.ProfileAId == ProfileAId
-                                       where fr.ProfileBId == ProfileBId
+                                       where fr.RequesterID == RequesterID
+                                       where fr.RecieverID == RecieverID
                                        select fr).ToList();
             var friendRelationship = friendRelationships[0];
             ctx.FriendRelationships.Remove(friendRelationship);
