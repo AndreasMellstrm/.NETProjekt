@@ -32,8 +32,8 @@ namespace NETDatingApp.Models {
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {
            base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<FriendRelationship>().HasRequired(c => c.ProfileA).WithMany(u => u.ProfileAFriendRelationship).HasForeignKey(c => c.ProfileAId).WillCascadeOnDelete(false);
-            modelBuilder.Entity<FriendRelationship>().HasRequired(c => c.ProfileB).WithMany(u => u.ProfileBFriendRelationship).HasForeignKey(c => c.ProfileBId).WillCascadeOnDelete(false);
+            modelBuilder.Entity<FriendRelationship>().HasRequired(c => c.Requester).WithMany(u => u.SentRequest).HasForeignKey(c => c.RequesterID).WillCascadeOnDelete(false);
+            modelBuilder.Entity<FriendRelationship>().HasRequired(c => c.Reciever).WithMany(u => u.RecievedRequest).HasForeignKey(c => c.RecieverID).WillCascadeOnDelete(false);
         }
        
         public static ApplicationDbContext Create() {
