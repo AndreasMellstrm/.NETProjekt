@@ -28,23 +28,6 @@ namespace NETDatingApp.Controllers
 
             return PartialView(profile);
         }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult SendPost(SendPostViewModel model)
-        {
-            var Post = new Post
-            {
-                Message = model.Message,
-                RecieverID = model.RecieverID,
-                SenderID = model.SenderID
-            };
-            ctx.Posts.Add(Post);
-            ctx.SaveChanges();
-
-            return View();
-        }
-
-        
+ 
     }
 }

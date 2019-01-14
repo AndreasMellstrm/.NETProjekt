@@ -16,7 +16,7 @@ namespace NETDatingApp.Controllers
         }
 
         [HttpGet]
-        [Route("")]
+        [Route("Get")]
         public Post[] ShowPosts(int id)
         {
             var Posts = (from P in ctx.Posts

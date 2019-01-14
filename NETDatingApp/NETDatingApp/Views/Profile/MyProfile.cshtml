@@ -74,7 +74,7 @@
         function update() {
 
                 // Hämta posts från Controllers/PostApiController.cs/GetAll()
-                $.get('/api/posts?id=@Model.Profile.ProfileID', function (Posts) {
+                $.get('/api/posts/Get?id=@Model.Profile.ProfileID', function (Posts) {
                     $('#posts-output').text('');
 
                     Posts.forEach(function (Post) {
@@ -88,13 +88,13 @@
         }
 
         function CreateNewPost() {
-            $.post('/api/posts/send?message=' + $("#post-text").val() + '&recieverID=@Model.Profile.ProfileID&senderID=@Model.Profile.ProfileID');
-            $('#post-text').text('');
-	        update();
-        }
-
-        $('#send-post').click(){
-            CreateNewPost();
-        }
+            $.post('/api/posts/send?message=' + $("#post-text").val() + '&recieverID=@Model.Profile.ProfileID&senderID=@Model.Profile.ProfileID')
+                .done(function( ){
+                    update();
+                    $('#post-text').val('');
+                }
+            )};
+        
+           
     </script>
 }
