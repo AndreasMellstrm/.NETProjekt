@@ -37,7 +37,7 @@ namespace NETDatingApp.Controllers
 
         /*Tar in ett ProfileID och väljer ut en profil baserat på ProfileID samt en lista av vänförfrågningar. Returnerar sen vyn med en ProfileViewmodel
         som har profilen och listan med vänförfrågningar om listan innehåller några. Annars returnerar den vyn med endast en profil lagrad i ProfileViewModelen*/
-        public ActionResult Profile(int ProfileID) {
+        public ActionResult UserProfile(int ProfileID) {
             if (ProfileID != GetCurrentProfile().ProfileID)
             {
                 var profiles = (from p in ctx.PersonProfiles
@@ -56,7 +56,8 @@ namespace NETDatingApp.Controllers
                     var friendrequest = friendrequests[0];
                     return View(new ProfileViewModel
                     {
-                        Profile = profile,
+                        TargetedProfile = profile,
+                        CurrentProfile = currentProfile,
                         FriendRequest = friendrequest
                     });
                 }
@@ -64,7 +65,8 @@ namespace NETDatingApp.Controllers
                 {
                     return View(new ProfileViewModel
                     {
-                        Profile = profile
+                        TargetedProfile = profile,
+                        CurrentProfile = currentProfile
                     });
                 }
             }
@@ -140,7 +142,7 @@ namespace NETDatingApp.Controllers
         /*Om en användare är inloggad returneras en PartialView med en FriendRequestViewModel
         men om ingen användare är inloggad returnas en PartialView utan någon model.*/
         public ActionResult _LoginPartial() {
-            if (User.Identity.IsAuthenticated) {
+            if (System.Web.HttpContext.Current.User != null && System.Web.HttpContext.Current.User.Identity.IsAuthenticated) {
                 var currentProfile = GetCurrentProfile();
                 return PartialView(new FriendRequestViewModel {
                     FriendRequests = (from fr in ctx.FriendRelationships

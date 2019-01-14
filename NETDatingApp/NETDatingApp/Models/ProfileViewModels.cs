@@ -10,7 +10,8 @@ namespace NETDatingApp.Models {
     }
 
     public class ProfileViewModel {
-        public PersonProfile Profile { get; set; }
+        public PersonProfile CurrentProfile { get; set; }
+        public PersonProfile TargetedProfile { get; set; }
         public FriendRelationship FriendRequest { get; set; }
     }
 
@@ -19,10 +20,12 @@ namespace NETDatingApp.Models {
 
         [Required]
         [Display(Name = "Förnamn")]
+        [RegularExpression("([a-öA-Ö0-9 .&'-]+)", ErrorMessage = "Vänligen använd endast giltiga tecken")]
         public string FirstName { get; set; }
 
         [Required]
         [Display(Name = "Efternamn")]
+        [RegularExpression("([a-öA-Ö0-9 .&'-]+)", ErrorMessage = "Vänligen använd endast giltiga tecken")]
         public string LastName { get; set; }
 
         [Range(18, 130)]
@@ -30,11 +33,13 @@ namespace NETDatingApp.Models {
         public int Age { get; set; }
 
         [Display(Name ="Bio")]
+        [RegularExpression("([a-öA-Ö0-9 .&'-]+)", ErrorMessage = "Vänligen använd endast giltiga tecken")]
         public string Bio { get; set; }
 
 
         [Required]
         [Display(Name = "Kön")]
+        [RegularExpression("([a-öA-Ö0-9 .&'-]+)", ErrorMessage = "Vänligen använd endast giltiga tecken")]
         public string Gender { get; set; }
     }
 

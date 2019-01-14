@@ -1,49 +1,49 @@
-﻿@using NETDatingApp.Models
-@model MyProfileViewModel
-
-
+﻿@model NETDatingApp.Models.ProfileViewModel
 @{
-    ViewBag.Title = "MyProfile";
+    ViewBag.Title = "Profile";
 }
 
 <div class="container">
     <div class="fb-profile">
         <!-- header -->
-        <img align="left" class="fb-image-lg" src="~/Content/img/profileHeader.jpg" alt="Profile image example" />
+        <img align="left" class="fb-image-lg" src="http://lorempixel.com/850/280/nightlife/5/" alt="Profile image" />
 
         <!-- Thumbnail -->
-        <img align="left" class="fb-image-profile thumbnail" src="@Model.Profile.ProfileImg" alt="Profile image example" />
+        <img align="left" class="fb-image-profile thumbnail" src="~/Content/img/blankProfile.png" alt="Profile image" />
         <div class="fb-profile-text">
-            <h1 class="profile-name">@Model.Profile.FirstName @Model.Profile.LastName</h1>
+            <h1 class="profile-name"> @Model.TargetedProfile.FirstName @Model.TargetedProfile.LastName</h1>
+            <p class="profile-bio"> @Model.TargetedProfile.Bio </p>
 
             <div class="bio">
                 <ul>
-                    <li><span class="bold">Bio:</span>@Model.Profile.Bio</li>
-                    <li><span class="bold"> Kön: </span> @Model.Profile.Gender</li>
-                    <li><span class="bold"> Ålder: </span> @Model.Profile.Age</li>
+                    <li><span class="bold"> Kön: </span> @Model.TargetedProfile.Gender</li>
+                    <li><span class="bold"> Ålder: </span> @Model.TargetedProfile.Age</li>
 
                 </ul>
             </div>
 
         </div>
-        <div class="friend-list">
-            @Html.ActionLink("Vänlista", "FriendsList", "Profile", new { @class = "btn btn-primary" })
-        </div>
-
         <hr />
         <div class="profile-container">
-            <row>
-                @Html.ActionLink("Redigera profilinfo", "ChangeProfileInfo", "Profile", new { @class = "add-friend" })
-                @Html.ActionLink("Byt bild", "ChangeProfileImg", "Profile", new { @class = "add-friend" })
-            </row>
-            <hr />
+            @if (Model.FriendRequest == null) {
+                @Html.ActionLink("Lägg till vän", "SendFriendRequest", "Profile", new { Model.TargetedProfile.ProfileID }, new { @class = "add-friend" })
+            }
+            else if (Model.FriendRequest.IsFriends == false && Model.FriendRequest.RequesterID != Model.TargetedProfile.ProfileID) {
+                <Label class="label label-default">Vänförfrågan skickad</Label>
+            }
+            else if (Model.FriendRequest.IsFriends == false && Model.FriendRequest.RequesterID == Model.TargetedProfile.ProfileID) {
+                <Label class="label label-default">Vänförfrågan mottagen</Label>
+            }
+            else {
+                <Label class="label label-default">Redan vänner</Label>
+            }
 
             <div class="card">
                 <div class="card-content">
                     <textarea maxlength="140" style="resize: none; width: 20rem; height: 15rem;" class="card-content" id="post-text"></textarea>
                 </div>
                 <br />
-                <button  id="send-post" class="btn btn-primary" type="submit" onclick="CreateNewPost()">Skicka</button>
+                <button id="send-post" class="btn btn-primary" type="submit" onclick="CreateNewPost()">Skicka</button>
             </div>
 
             <h3 class="posts-headline"> Senaste inläggen </h3>
@@ -63,8 +63,8 @@
             </div>
         </div> <!-- /profile-container -->
     </div> <!-- /fb-profile -->
-
 </div> <!-- /container -->
+
 @section scripts {
     <script>
         $(function () {
@@ -74,7 +74,7 @@
         function update() {
 
                 // Hämta posts från Controllers/PostApiController.cs/GetAll()
-                $.get('/api/posts/Get?id=@Model.Profile.ProfileID', function (Posts) {
+                $.get('/api/posts/Get?id=@Model.TargetedProfile.ProfileID', function (Posts) {
                     $('#posts-output').text('');
 
                     Posts.forEach(function (Post) {
@@ -88,13 +88,13 @@
         }
 
         function CreateNewPost() {
-            $.post('/api/posts/send?message=' + $("#post-text").val() + '&recieverID=@Model.Profile.ProfileID&senderID=@Model.Profile.ProfileID')
+            $.post('/api/posts/send?message=' + $("#post-text").val() + '&recieverID=@Model.TargetedProfile.ProfileID&senderID=@Model.CurrentProfile.ProfileID')
                 .done(function( ){
                     update();
                     $('#post-text').val('');
                 }
             )};
-        
-           
+
+
     </script>
 }
