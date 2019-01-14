@@ -88,12 +88,18 @@
         }
 
         function CreateNewPost() {
-            $.post('/api/posts/send?message=' + $("#post-text").val() + '&recieverID=@Model.Profile.ProfileID&senderID=@Model.Profile.ProfileID')
-                .done(function( ){
-                    update();
-                    $('#post-text').val('');
-                }
-            )};
+            if (!$.trim($("#post-text").val())) {
+                alert("Det går inte att skicka ett tomt inlägg.");
+            }
+            else {
+                $.post('/api/posts/send?message=' + $("#post-text").val() + '&recieverID=@Model.Profile.ProfileID&senderID=@Model.Profile.ProfileID')
+                    .done(function () {
+                        update();
+                        $('#post-text').val('');
+                    });
+            }
+        };
+        
         
            
     </script>
