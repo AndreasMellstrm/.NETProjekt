@@ -9,7 +9,7 @@
 <div class="container">
     <div class="fb-profile">
         <!-- header -->
-        <img align="left" class="fb-image-lg" src="http://lorempixel.com/850/280/nightlife/5/" alt="Profile image example" />
+        <img align="left" class="fb-image-lg" src="~/Content/img/profileHeader.jpg" alt="Profile image example" />
 
         <!-- Thumbnail -->
         <img align="left" class="fb-image-profile thumbnail" src="@Model.Profile.ProfileImg" alt="Profile image example" />
@@ -44,16 +44,15 @@
         <hr />
         <div class="profile-container">
             <row>
-                @Html.ActionLink("Redigera profilinfo","ChangeProfileInfo","Profile", new { @class = "add-friend" })
+                @Html.ActionLink("Redigera profilinfo", "ChangeProfileInfo", "Profile", new { @class = "add-friend" })
                 @Html.ActionLink("Byt bild", "ChangeProfileImg", "Profile", new { @class = "add-friend" })
             </row>
 
-            <div class="form-group">
-                <label for="comment" id="user">Vill du skriva något till @Model.Profile.FirstName ?</label>
-                <textarea class="form-control" rows="5" id="comment"></textarea>
-            </div>
-
-            <button type="button" class="btn" id="submit"> Skicka </button>
+            @*@ <div class="form-group">
+                    @{
+                        Html.RenderAction("SendPost", "Post",new { RecieverID = Model.Profile.ProfileID.ToString(), SenderID = Model.Profile.ProfileID.ToString() });
+                    }
+                </div> *@
 
             <hr />
             <h3 class="posts-headline"> Senaste inläggen </h3>
@@ -61,30 +60,45 @@
             <!-- user posts end up here -->
             <div id="show_stored_content">
                 <div class="profile-posts">
-
-                    <div class="post-card">
-
-                        <div class="post-img">
-                            <img src="" />
-                        </div>
-
-                        <div class="post-content">
-                            <h3 class="post-poster"> <a href=""> Användare användaresson </a> </h3>
-                            <p> TextyTexty</p>
-                        </div>
-
-
-
-                    </div>
-
-
-
-
-
-
-                </div> <!-- /profile-posts -->
+                    @*
+                        @{
+                            Html.RenderAction("ShowPosts", "Post", new { recieverID = Model.Profile.ProfileID.ToString() });
+                        }
+                *@
             </div>
-        </div> <!-- /profile-container -->
-    </div> <!-- /fb-profile -->
+        </div>
+    </div> <!-- /profile-container -->
+</div> <!-- /fb-profile -->
+<h1>HejHej</h1>
+<table class="table">
+    <p class="hidden">@Model.Profile.ProfileID</p>
+    <tbody id="posts-output"></tbody>
+</table>
+
 
 </div> <!-- /container -->
+@section scripts {
+    <script>
+        $(function () {
+            function update() {
+
+                // Hämta posts från Controllers/PostApiController.cs/GetAll()
+                $.get('/api/posts/', function (Posts) {
+                    $('#posts-output').text(''); // Rensa tabellen
+
+                    // Loopa igenom resultatet
+                    Posts.forEach(function (Post) {
+                        var tr = $('<tr></tr>');
+                        tr.append('<td>' + Post.Message + '</td>');
+                        tr.append('<td>' + Post.SenderID + '</td>');
+                        tr.append('<td>' + Post.RecieverID + '</td>');
+                        $('#posts-output').append(tr);
+                    });
+
+                });
+            }
+            update();
+            console.log("i");
+        });
+    </script>
+}

@@ -1,0 +1,31 @@
+﻿@model NETDatingApp.Models.PersonProfile
+<h1>HejHej</h1>
+<table class="table">
+    <p class="hidden">@Model.ProfileID</p>
+    <tbody id="posts-output"></tbody>
+</table>
+@section scripts {
+    <script>
+        $(function () {
+            function update() {
+
+                // Hämta posts från Controllers/PostApiController.cs/GetAll()
+                $.get('/api/posts/', function (Posts) {
+                    $('#posts-output').text(''); // Rensa tabellen
+
+                    // Loopa igenom resultatet
+                    Posts.forEach(function (Post) {
+                        var tr = $('<tr></tr>');
+                        tr.append('<td>Testar och lyckas</td>');
+                        tr.append('<td>' + Post.Message + '</td>');
+                        tr.append('<td>' + Post.SenderID + '</td>');
+                        tr.append('<td>' + Post.RecieverID + '</td>');
+                        $('#posts-output').append(tr);
+                    });
+
+                });
+            }
+            update();
+        });
+    </script>
+}

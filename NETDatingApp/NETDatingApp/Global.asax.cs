@@ -5,8 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-
-
+using System.Web.Http;
 
 namespace NETDatingApp
 {
@@ -18,7 +17,8 @@ namespace NETDatingApp
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
+            //System.Web.Http.GlobalConfiguration.Configure(WebApiConfig.Register);
+            WebApiConfig.Register(GlobalConfiguration.Configuration);
         }
     }
 }

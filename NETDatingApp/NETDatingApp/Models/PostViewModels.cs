@@ -13,8 +13,4 @@ namespace NETDatingApp.Models
 
     }
 
-    public class ShowPostViewModel
-    {
-        public List<Post> PostList { get; set; }
-    }
 }

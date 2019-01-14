@@ -13,7 +13,6 @@ namespace NETDatingApp.Models
         [Key]
         public int ID { get; set; }
 
-        [DisplayName("Inlägg")]
         public string Message { get; set; }
 
         public int SenderID { get; set; }
