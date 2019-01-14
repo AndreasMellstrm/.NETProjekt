@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-md-2 col-sm-2">
             <img src="@Friend.ProfileImg" class="rounded-circle" style="width: 50px; height: 50px;">
-            @Html.ActionLink(@Friend.FirstName + " " + @Friend.LastName, "Profile", "Profile", new { Friend.ProfileID })
+            @Html.ActionLink(@Friend.FirstName + " " + @Friend.LastName, "Profile", "Profile", new { Friend.ProfileID }, null)
         </div>
     </div>
     }

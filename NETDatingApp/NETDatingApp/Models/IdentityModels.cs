@@ -36,6 +36,8 @@ namespace NETDatingApp.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
+        //Överlagring av metoden OnModelCreating för att skapa främmande nycklar i tabellerna FriendRelationships och Posts
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {
            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<FriendRelationship>().HasRequired(c => c.FriendRequester).WithMany(u => u.SentRequest).HasForeignKey(c => c.RequesterID).WillCascadeOnDelete(false);

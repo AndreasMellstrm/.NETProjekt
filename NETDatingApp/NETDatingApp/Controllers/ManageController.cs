@@ -249,6 +249,7 @@ namespace NETDatingApp.Controllers
             return View();
         }
 
+        //Metod för att ändra emailen på den inloggade användaren
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ChangeEmail(ChangeEmailViewModel model) {
