@@ -43,7 +43,7 @@
                     <textarea maxlength="250" style="resize: none; width: 20rem; height: 15rem;" class="card-content" id="post-text"></textarea>
                 </div>
                 <br />
-                <button class="btn btn-primary" type="submit" onclick="CreateNewPost()">Skicka</button>
+                <button  id="send-post" class="btn btn-primary" type="submit" onclick="CreateNewPost()">Skicka</button>
             </div>
 
             <h3 class="posts-headline"> Senaste inläggen </h3>
@@ -68,14 +68,6 @@
 @section scripts {
     <script>
         $(function () {
-            $('#post-Text').Validate({
-                rules: {
-
-                    lettersonly: true,
-                    required: true
-                }
-            });
-
             update();
         });
 
@@ -83,9 +75,8 @@
 
                 // Hämta posts från Controllers/PostApiController.cs/GetAll()
                 $.get('/api/posts?id=@Model.Profile.ProfileID', function (Posts) {
-                    $('#posts-output').text(''); // Rensa tabellen
+                    $('#posts-output').text('');
 
-                    // Loopa igenom resultatet
                     Posts.forEach(function (Post) {
                         var tr = $('<tr></tr>');
                         tr.append('<td>' + Post.Message + '</td>');
@@ -97,8 +88,13 @@
         }
 
         function CreateNewPost() {
-            $.post('/api/posts/send?message='+$("#post-text").val()+'&recieverID=@Model.Profile.ProfileID&senderID=@Model.Profile.ProfileID');
-	    update();
+            $.post('/api/posts/send?message=' + $("#post-text").val() + '&recieverID=@Model.Profile.ProfileID&senderID=@Model.Profile.ProfileID');
+            $('#post-text').text('');
+	        update();
+        }
+
+        $('#send-post').click(){
+            CreateNewPost();
         }
     </script>
 }
