@@ -333,7 +333,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\img\" />
-    <Folder Include="Views\PersonProfile\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

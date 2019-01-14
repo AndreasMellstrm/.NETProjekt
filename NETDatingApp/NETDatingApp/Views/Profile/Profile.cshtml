@@ -3,17 +3,16 @@
     ViewBag.Title = "Profile";
 }
 
-<h2>Profile</h2>
 <div class="container">
     <div class="fb-profile">
         <!-- header -->
-        <img align="left" class="fb-image-lg" src="http://lorempixel.com/850/280/nightlife/5/" alt="Profile image example" />
+        <img align="left" class="fb-image-lg" src="http://lorempixel.com/850/280/nightlife/5/" alt="Profile image" />
 
         <!-- Thumbnail -->
-        <img align="left" class="fb-image-profile thumbnail" src="~/Content/img/blankProfile.png" alt="Profile image example" />
+        <img align="left" class="fb-image-profile thumbnail" src="~/Content/img/blankProfile.png" alt="Profile image" />
         <div class="fb-profile-text">
-            <h1 class="profile-name">@Model.Profile.FirstName @Model.Profile.LastName</h1>
-            <p class="profile-bio">@Model.Profile.Bio</p>
+            <h1 class="profile-name"> @Model.Profile.FirstName @Model.Profile.LastName</h1>
+            <p class="profile-bio"> @Model.Profile.Bio </p>
 
             <div class="bio">
                 <ul>
