@@ -11,6 +11,11 @@ namespace NETDatingApp
         {
             config.MapHttpAttributeRoutes();
 
+            /*config.Routes.MapHttpRoute(
+                name: "PostSend",
+                routeTemplate: "api/posts/{message}/{recieverID}/{senderID}",
+                );*/
+
             config.Routes.MapHttpRoute(
                 name: "PostApiController",
                 routeTemplate: "api/posts/{id}",

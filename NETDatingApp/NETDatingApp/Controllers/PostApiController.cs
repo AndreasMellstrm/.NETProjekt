@@ -30,7 +30,7 @@ namespace NETDatingApp.Controllers
 
         [HttpPost]
         [Route("Send")]
-        public void SendPost(string message,int recieverID, int senderID) {
+        public async void SendPost(string message,int recieverID, int senderID) {
 
             var post = new Post {
                 Message = message,
@@ -38,7 +38,7 @@ namespace NETDatingApp.Controllers
                 SenderID = senderID
             };
             ctx.Posts.Add(post);
-            ctx.SaveChanges();
+            await ctx.SaveChangesAsync();
         }
     }
 }

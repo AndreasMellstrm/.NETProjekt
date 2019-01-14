@@ -37,13 +37,13 @@
                 @Html.ActionLink("Byt bild", "ChangeProfileImg", "Profile", new { @class = "add-friend" })
             </row>
             <hr />
-            
+
             <div class="card">
                 <div class="card-content">
                     <textarea maxlength="250" style="resize: none; width: 20rem; height: 15rem;" class="card-content" id="post-text"></textarea>
                 </div>
                 <br />
-                <button class="btn btn-primary" type="submit">Skicka</button>
+                <button class="btn btn-primary" type="submit" onclick="CreateNewPost()">Skicka</button>
             </div>
 
             <h3 class="posts-headline"> Senaste inläggen </h3>
@@ -60,15 +60,26 @@
                     </table>
 
                 </div>
-        </div>
-    </div> <!-- /profile-container -->
-</div> <!-- /fb-profile -->
+            </div>
+        </div> <!-- /profile-container -->
+    </div> <!-- /fb-profile -->
 
 </div> <!-- /container -->
 @section scripts {
     <script>
         $(function () {
-            function update() {
+            $('#post-Text').Validate({
+                rules: {
+
+                    lettersonly: true,
+                    required: true
+                }
+            });
+
+            update();
+        });
+
+        function update() {
 
                 // Hämta posts från Controllers/PostApiController.cs/GetAll()
                 $.get('/api/posts?id=@Model.Profile.ProfileID', function (Posts) {
@@ -83,9 +94,11 @@
                     });
 
                 });
-            }
-            update();
-            console.log("i");
-        });
+        }
+
+        function CreateNewPost() {
+            $.post('/api/posts/send?message='+$("#post-text").val()+'&recieverID=@Model.Profile.ProfileID&senderID=@Model.Profile.ProfileID');
+	    update();
+        }
     </script>
 }
