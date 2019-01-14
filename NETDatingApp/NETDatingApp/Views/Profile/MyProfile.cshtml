@@ -40,7 +40,7 @@
 
             <div class="card">
                 <div class="card-content">
-                    <textarea maxlength="250" style="resize: none; width: 20rem; height: 15rem;" class="card-content" id="post-text"></textarea>
+                    <textarea maxlength="140" style="resize: none; width: 20rem; height: 15rem;" class="card-content" id="post-text"></textarea>
                 </div>
                 <br />
                 <button  id="send-post" class="btn btn-primary" type="submit" onclick="CreateNewPost()">Skicka</button>
@@ -88,12 +88,18 @@
         }
 
         function CreateNewPost() {
-            $.post('/api/posts/send?message=' + $("#post-text").val() + '&recieverID=@Model.Profile.ProfileID&senderID=@Model.Profile.ProfileID')
-                .done(function( ){
-                    update();
-                    $('#post-text').val('');
-                }
-            )};
+            if (!$.trim($("#post-text").val())) {
+                alert("Det går inte att skicka ett tomt inlägg.");
+            }
+            else {
+                $.post('/api/posts/send?message=' + $("#post-text").val() + '&recieverID=@Model.Profile.ProfileID&senderID=@Model.Profile.ProfileID')
+                    .done(function () {
+                        update();
+                        $('#post-text').val('');
+                    });
+            }
+        };
+        
         
            
     </script>

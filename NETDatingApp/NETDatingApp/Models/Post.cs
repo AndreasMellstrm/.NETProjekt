@@ -13,6 +13,8 @@ namespace NETDatingApp.Models
         [Key]
         public int ID { get; set; }
 
+        [Required]
+        [StringLength(140)]
         public string Message { get; set; }
 
         public int SenderID { get; set; }

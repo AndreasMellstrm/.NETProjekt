@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web.Http;
 using NETDatingApp.Models;
@@ -38,7 +40,7 @@ namespace NETDatingApp.Controllers
                 SenderID = senderID
             };
             ctx.Posts.Add(post);
-            ctx.SaveChanges();
+            ctx.SaveChanges();            
         }
     }
 }
