@@ -88,13 +88,24 @@
         }
 
         function CreateNewPost() {
-            $.post('/api/posts/send?message=' + $("#post-text").val() + '&recieverID=@Model.TargetedProfile.ProfileID&senderID=@Model.CurrentProfile.ProfileID')
-                .done(function( ){
-                    update();
-                    $('#post-text').val('');
-                }
-            )};
 
+            if (!$.trim($("#post-text").val())) {
+                alert("Det går inte att skicka ett tomt inlägg.");
+            }
+            else {
+                var regex = /^[a-öA-Ö0-9,.!?\s]*$/;
+                if (regex.test($("#post-text").val())) {
+                    $.post('/api/posts/send?message=' + $("#post-text").val() + '&recieverID=@Model.TargetedProfile.ProfileID&senderID=@Model.CurrentProfile.ProfileID')
+                        .done(function () {
+                            update();
+                            $('#post-text').val('');
+                        });
+                }
+                else {
+                    alert("Använd endast giltiga tecken. (A-Ö, 0-9, .,!?)")
+                }
+            }
+        }
 
     </script>
 }

@@ -40,7 +40,9 @@
 
             <div class="card">
                 <div class="card-content">
+                    <form id="PostForm">
                     <textarea maxlength="140" style="resize: none; width: 20rem; height: 15rem;" class="card-content" id="post-text"></textarea>
+                    </form>
                 </div>
                 <br />
                 <button  id="send-post" class="btn btn-primary" type="submit" onclick="CreateNewPost()">Skicka</button>
@@ -66,7 +68,7 @@
 
 </div> <!-- /container -->
 @section scripts {
-    <script>
+<script>
         $(function () {
             update();
         });
@@ -88,19 +90,26 @@
         }
 
         function CreateNewPost() {
+
             if (!$.trim($("#post-text").val())) {
                 alert("Det går inte att skicka ett tomt inlägg.");
             }
             else {
-                $.post('/api/posts/send?message=' + $("#post-text").val() + '&recieverID=@Model.Profile.ProfileID&senderID=@Model.Profile.ProfileID')
-                    .done(function () {
-                        update();
-                        $('#post-text').val('');
-                    });
+                var regex = /^[a-öA-Ö0-9,.!?\s]*$/;
+                if (regex.test($("#post-text").val())) {
+                    $.post('/api/posts/send?message=' + $("#post-text").val() + '&recieverID=@Model.Profile.ProfileID&senderID=@Model.Profile.ProfileID')
+                        .done(function () {
+                            update();
+                            $('#post-text').val('');
+                        });
+                }
+                else {
+                    alert("Använd endast giltiga tecken. (A-Ö, 0-9, .,!?)")
+                }
             }
-        };
-        
-        
-           
-    </script>
+        }
+
+
+
+</script>
 }
