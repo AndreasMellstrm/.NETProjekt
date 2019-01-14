@@ -60,20 +60,18 @@
             <!-- user posts end up here -->
             <div id="show_stored_content">
                 <div class="profile-posts">
-                    @*
-                        @{
-                            Html.RenderAction("ShowPosts", "Post", new { recieverID = Model.Profile.ProfileID.ToString() });
-                        }
-                *@
-            </div>
+                    <table class="table">
+                        <tr>
+                            <th>Inlägg: </th>
+                            <th>Skrivet av: </th>
+                        </tr>
+                        <tbody id="posts-output"></tbody>
+                    </table>
+
+                </div>
         </div>
     </div> <!-- /profile-container -->
 </div> <!-- /fb-profile -->
-<h1>HejHej</h1>
-<table class="table">
-    <tbody id="posts-output"></tbody>
-</table>
-
 
 </div> <!-- /container -->
 @section scripts {
@@ -90,7 +88,6 @@
                         var tr = $('<tr></tr>');
                         tr.append('<td>' + Post.Message + '</td>');
                         tr.append('<td>' + Post.PostSender.FirstName + ' ' + Post.PostSender.LastName + '</td>');
-                        tr.append('<td>' + Post.PostReciever.FirstName + ' ' + Post.PostReciever.LastName + '</td>');
                         $('#posts-output').append(tr);
                     });
 
