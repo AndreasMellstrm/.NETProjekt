@@ -36,14 +36,16 @@
                 @Html.ActionLink("Redigera profilinfo", "ChangeProfileInfo", "Profile", new { @class = "add-friend" })
                 @Html.ActionLink("Byt bild", "ChangeProfileImg", "Profile", new { @class = "add-friend" })
             </row>
-
-            @*@ <div class="form-group">
-                    @{
-                        Html.RenderAction("SendPost", "Post",new { RecieverID = Model.Profile.ProfileID.ToString(), SenderID = Model.Profile.ProfileID.ToString() });
-                    }
-                </div> *@
-
             <hr />
+            
+            <div class="card">
+                <div class="card-content">
+                    <textarea maxlength="250" style="resize: none; width: 20rem; height: 15rem;" class="card-content" id="post-text"></textarea>
+                </div>
+                <br />
+                <button class="btn btn-primary" type="submit">Skicka</button>
+            </div>
+
             <h3 class="posts-headline"> Senaste inläggen </h3>
 
             <!-- user posts end up here -->
