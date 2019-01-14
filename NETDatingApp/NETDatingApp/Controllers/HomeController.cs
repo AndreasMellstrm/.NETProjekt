@@ -1,17 +1,16 @@
 ﻿using NETDatingApp.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace NETDatingApp.Controllers {
     public class HomeController : Controller {
 
+        //Returnerar startsidan samt hämtar 3 stycken personProfile och skickar vidare dem till vyn
         public ActionResult Index() {
             ApplicationDbContext db = new ApplicationDbContext();
             return View(db.PersonProfiles.ToList().Take(3));
         }
+
 
         public ActionResult About() {
             ViewBag.Message = "Your application description page.";
@@ -24,12 +23,5 @@ namespace NETDatingApp.Controllers {
 
             return View();
         }
-
-        public ActionResult MyProfile() {
-            ViewBag.Message = "Your profile page.";
-
-            return View();
-        }
-
     }
 }

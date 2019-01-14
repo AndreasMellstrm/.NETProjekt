@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Web;
-using Microsoft.AspNet.Identity;
+
 
 namespace NETDatingApp.Models {
     public class PersonProfile {
@@ -20,11 +15,13 @@ namespace NETDatingApp.Models {
         public int Age { get; set; }
         public string Bio { get; set; }
         public string ProfileImg { get; set; }
+
+        
         public virtual ICollection<ApplicationUser> ApplicationUsers { get; set; }
         
         [InverseProperty("FriendRequester")]
         public virtual ICollection<FriendRelationship> SentRequest { get; set; }
-
+        
         [InverseProperty("FriendReciever")]
         public virtual ICollection<FriendRelationship> RecievedRequest{ get; set; }
 
@@ -52,6 +49,7 @@ namespace NETDatingApp.Models {
         }
 
     }
+
 
     public class FriendRelationship {
 
