@@ -18,21 +18,22 @@
 
     @foreach (var item in Model) {
 
-        <div class="profile-card">
-            @Html.Partial("_ExampleUser", item)
-            @{
-                // Om ej inloggad omdirigeras man till login-page [1], annars om inloggad kommer man till respektive användares profilsida [2]
-                if (System.Web.HttpContext.Current.User != null && System.Web.HttpContext.Current.User.Identity.IsAuthenticated) {
-
-                    // [2]
-                    @Html.ActionLink("Läs mer", "UserProfile", "profile", new { @item.ProfileID }, new { @class = "profile-card-link" })
-                }
-                else {
-                    // [1]
-                    @Html.ActionLink("Läs mer", "Login", "Account", new { @class = "profile-card link" })
-                }
+    <div class="profile-card">
+        @Html.Partial("_ExampleUser", item)
+        @{ 
+           // Om ej inloggad omdirigeras man till login-page [1], annars om inloggad kommer man till respektive användares profilsida [2]
+            if (System.Web.HttpContext.Current.User != null && System.Web.HttpContext.Current.User.Identity.IsAuthenticated) {
+                
+                // [2]
+                @Html.ActionLink("Läs mer", "UserProfile", "profile", new { @item.ProfileID }, new { @class = "profile-card-link" })
             }
-        </div>
+            else
+            {
+                // [1]
+                @Html.ActionLink("Läs mer", "Login", "Account")
+            }
+        }
+    </div>
     }
 </div>
 
