@@ -26,17 +26,6 @@
             </div>
 
         </div>
-
-        <div class="friend-list">
-            <h4> Senaste besökarna</h4>
-            <ul>
-                <li> <a href=""> Ludvig Lund</a> </li>
-                <li> <a href=""> Ludvig Mellström</a> </li>
-                <li> <a href=""> Ludvig Sagtröm</a> </li>
-                <li> <a href=""> Hugo Mellström </a> </li>
-                <li> <a href=""> Andreas Sagström  </a> </li>
-            </ul>
-        </div>
         <div class="friend-list">
             @Html.ActionLink("Vänlista", "FriendsList", "Profile", new { @class = "btn btn-primary" })
         </div>
@@ -47,33 +36,33 @@
                 @Html.ActionLink("Redigera profilinfo", "ChangeProfileInfo", "Profile", new { @class = "add-friend" })
                 @Html.ActionLink("Byt bild", "ChangeProfileImg", "Profile", new { @class = "add-friend" })
             </row>
-
-            @*@ <div class="form-group">
-                    @{
-                        Html.RenderAction("SendPost", "Post",new { RecieverID = Model.Profile.ProfileID.ToString(), SenderID = Model.Profile.ProfileID.ToString() });
-                    }
-                </div> *@
-
             <hr />
+            
+            <div class="card">
+                <div class="card-content">
+                    <textarea maxlength="250" style="resize: none; width: 20rem; height: 15rem;" class="card-content" id="post-text"></textarea>
+                </div>
+                <br />
+                <button class="btn btn-primary" type="submit">Skicka</button>
+            </div>
+
             <h3 class="posts-headline"> Senaste inläggen </h3>
 
             <!-- user posts end up here -->
             <div id="show_stored_content">
                 <div class="profile-posts">
-                    @*
-                        @{
-                            Html.RenderAction("ShowPosts", "Post", new { recieverID = Model.Profile.ProfileID.ToString() });
-                        }
-                *@
-            </div>
+                    <table class="table">
+                        <tr>
+                            <th>Inlägg: </th>
+                            <th>Skrivet av: </th>
+                        </tr>
+                        <tbody id="posts-output"></tbody>
+                    </table>
+
+                </div>
         </div>
     </div> <!-- /profile-container -->
 </div> <!-- /fb-profile -->
-<h1>HejHej</h1>
-<table class="table">
-    <tbody id="posts-output"></tbody>
-</table>
-
 
 </div> <!-- /container -->
 @section scripts {
@@ -90,7 +79,6 @@
                         var tr = $('<tr></tr>');
                         tr.append('<td>' + Post.Message + '</td>');
                         tr.append('<td>' + Post.PostSender.FirstName + ' ' + Post.PostSender.LastName + '</td>');
-                        tr.append('<td>' + Post.PostReciever.FirstName + ' ' + Post.PostsReciever.LastName + '</td>');
                         $('#posts-output').append(tr);
                     });
 
