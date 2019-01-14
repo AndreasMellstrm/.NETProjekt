@@ -68,14 +68,6 @@
 @section scripts {
     <script>
         $(function () {
-            $('#post-Text').Validate({
-                rules: {
-
-                    lettersonly: true,
-                    required: true
-                }
-            });
-
             update();
         });
 
@@ -97,8 +89,9 @@
         }
 
         function CreateNewPost() {
-            $.post('/api/posts/send?message='+$("#post-text").val()+'&recieverID=@Model.Profile.ProfileID&senderID=@Model.Profile.ProfileID');
-	    update();
+            $.post('/api/posts/send?message=' + $("#post-text").val() + '&recieverID=@Model.Profile.ProfileID&senderID=@Model.Profile.ProfileID');            
+            update();
+            $('#post-text').val('');
         }
     </script>
 }
