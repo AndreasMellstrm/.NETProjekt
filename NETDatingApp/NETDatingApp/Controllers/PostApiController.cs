@@ -8,11 +8,17 @@ namespace NETDatingApp.Controllers
     [RoutePrefix("api/posts")]
     public class PostApiController : ApiController
     {
+
+        public ApplicationDbContext ctx { get; set; }
+
+        public PostApiController() {
+            ctx = new ApplicationDbContext();
+        }
+
         [HttpGet]
         [Route("")]
         public Post[] ShowPosts(int id)
         {
-            var ctx = new ApplicationDbContext();
             var Posts = (from P in ctx.Posts
                          where P.RecieverID == id
                          orderby P.ID descending
@@ -22,17 +28,17 @@ namespace NETDatingApp.Controllers
 
         }
 
-        /*[HttpGet]
-        [Route("")]
-        public ActionResult SendPost(string RecieverID, string SenderID)
-        {
-            int Reciever = int.Parse(RecieverID);
-            int Sender = int.Parse(SenderID);
-            return View(new SendPostViewModel
-            {
-                RecieverID = Reciever,
-                SenderID = Sender
-            });
-        }*/
+        [HttpPost]
+        [Route("Send")]
+        public void SendPost(string message,int recieverID, int senderID) {
+
+            var post = new Post {
+                Message = message,
+                RecieverID = recieverID,
+                SenderID = senderID
+            };
+            ctx.Posts.Add(post);
+            ctx.SaveChanges();
+        }
     }
 }
