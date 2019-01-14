@@ -27,5 +27,6 @@ namespace NETDatingApp.Models
         public virtual PersonProfile PostReciever{ get; set; }
     }
 }
+
         
         

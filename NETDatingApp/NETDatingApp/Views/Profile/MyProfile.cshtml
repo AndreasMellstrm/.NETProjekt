@@ -89,8 +89,8 @@
                     Posts.forEach(function (Post) {
                         var tr = $('<tr></tr>');
                         tr.append('<td>' + Post.Message + '</td>');
-                        tr.append('<td>' + Post.SenderID + '</td>');
-                        tr.append('<td>' + Post.RecieverID + '</td>');
+                        tr.append('<td>' + Post.PostSender.FirstName + ' ' + Post.PostSender.LastName + '</td>');
+                        tr.append('<td>' + Post.PostReciever.FirstName + ' ' + Post.PostReciever.LastName + '</td>');
                         $('#posts-output').append(tr);
                     });
 
