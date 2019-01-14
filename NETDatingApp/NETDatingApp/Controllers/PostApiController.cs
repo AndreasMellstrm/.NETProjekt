@@ -39,7 +39,6 @@ namespace NETDatingApp.Controllers
             };
             ctx.Posts.Add(post);
             ctx.SaveChanges();
-            
         }
     }
 }
