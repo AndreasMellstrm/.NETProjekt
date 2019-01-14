@@ -1,8 +1,10 @@
 ﻿@model NETDatingApp.Models.PersonProfile
 
+<!-- Partial-View för att visa exempelanvändare på förstasidasn (index) -->
+
 
 <h3 class="card-name"> @Model.FirstName @Model.LastName </h3>
     <div class="card-content">
-        <img class="card-img" src="@Model.ProfileImg" alt="Profile-pic">
+        <img class="card-img" src="@Model.ProfileImg" alt="Profile Picture">
         <p class="card-bio"> @Model.Bio </p>
     </div>
