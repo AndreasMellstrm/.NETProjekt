@@ -71,7 +71,6 @@
 </div> <!-- /fb-profile -->
 <h1>HejHej</h1>
 <table class="table">
-    <p class="hidden">@Model.Profile.ProfileID</p>
     <tbody id="posts-output"></tbody>
 </table>
 
@@ -83,7 +82,7 @@
             function update() {
 
                 // Hämta posts från Controllers/PostApiController.cs/GetAll()
-                $.get('/api/posts/', function (Posts) {
+                $.get('/api/posts?id=@Model.Profile.ProfileID', function (Posts) {
                     $('#posts-output').text(''); // Rensa tabellen
 
                     // Loopa igenom resultatet

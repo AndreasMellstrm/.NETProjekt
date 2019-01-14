@@ -10,24 +10,16 @@ namespace NETDatingApp.Controllers
     {
         [HttpGet]
         [Route("")]
-        public Post[] ShowPosts(int ProfileID)
+        public Post[] ShowPosts(int id)
         {
             var ctx = new ApplicationDbContext();
             var Posts = (from P in ctx.Posts
-                         where P.RecieverID == ProfileID
+                         where P.RecieverID == id
                          orderby P.ID descending
                          select P).ToArray();
 
             return Posts;
 
-        }
-
-        [HttpGet]
-        [Route("test")]
-        public string[] tomLista()
-        {
-            var tomLista = new string[3];
-            return tomLista;
         }
 
         /*[HttpGet]
