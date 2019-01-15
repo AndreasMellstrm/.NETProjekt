@@ -132,9 +132,9 @@ namespace NETDatingApp.Controllers
             return View(new FriendsListViewModel {
                 Profile = profile,
                 Friends = (from fr in ctx.FriendRelationships
-                           where fr.RequesterID == profile.ProfileID
+                           where fr.RequesterID == profile.ProfileID 
                            || fr.RecieverID == profile.ProfileID
-                           && fr.IsFriends == true
+                           where fr.IsFriends == true
                            select fr).ToList()
             });
         }
