@@ -9,7 +9,7 @@
         <img align="left" class="fb-image-lg" src="http://lorempixel.com/850/280/nightlife/5/" alt="Profile image" />
 
         <!-- Thumbnail -->
-        <img align="left" class="fb-image-profile thumbnail" src="~/Content/img/blankProfile.png" alt="Profile image" />
+        <img align="left" class="fb-image-profile thumbnail" src="@Model.TargetedProfile.ProfileImg" alt="Profile image" />
         <div class="fb-profile-text">
             <h1 class="profile-name"> @Model.TargetedProfile.FirstName @Model.TargetedProfile.LastName</h1>
             <p class="profile-bio"> @Model.TargetedProfile.Bio </p>
